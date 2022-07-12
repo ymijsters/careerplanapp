@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server",
-    "start": "node server > stdout.txt 2> stderr.txt &"
+    "start": "node server > stdout.txt 2> stderr.txt &",
+    "postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "author": "Yannick Mijsters",
   "license": "MIT",
