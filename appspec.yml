@@ -61,9 +61,12 @@ hooks:
   #   incomplete event declarations may cause associated deployments to fail.
   # During the BeforeInstall deployment lifecycle event, run the commands
   #   in the script specified in "location".
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      timeout: 100
   AfterInstall:
     - location: scripts/after_install.sh
-      timeout: 300
+      timeout: 100
   ApplicationStart:
     - location: scripts/application_start.sh
-      timeout: 300
+      timeout: 100
