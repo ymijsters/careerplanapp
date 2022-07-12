@@ -1,3 +1,3 @@
 cd /home/ec2-user
-npm i
-npm run postbuild
+sudo npm i
+sudo npm run postbuild
