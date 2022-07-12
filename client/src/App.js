@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/layout/Navbar";
 import { Landing } from "./components/layout/Landing";
 import { Register } from "./components/auth/Register";
@@ -10,12 +10,12 @@ const App = () => (
   <Router>
     <Fragment>
       <Navbar />
-      <Route exact path='/' component={Landing} />
+      <Route path='/' element={<Landing />} />
       <section className='container'>
-        <Switch>
-          <Route exact path='/register' component={Register} />
-          <Route exact path='/login' component={Login} />
-        </Switch>
+        <Routes>
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+        </Routes>
       </section>
     </Fragment>
   </Router>
