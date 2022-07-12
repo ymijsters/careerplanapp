@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://yannickm:yannickm@cluster0.onvs4.mongodb.net/?retryWrites=true&w=majority",
+  "jwtSecret": "CareerAppJWTSecretToken"
+}
