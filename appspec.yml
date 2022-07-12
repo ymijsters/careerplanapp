@@ -62,8 +62,8 @@ hooks:
   # During the BeforeInstall deployment lifecycle event, run the commands
   #   in the script specified in "location".
   AfterInstall:
-    - location: /home/ec2-user/scripts/after_install.sh
+    - location: scripts/after_install.sh
       timeout: 300
   ApplicationStart:
-    - location: /home/ec2-user/scripts/application_start.sh
+    - location: scripts/application_start.sh
       timeout: 300
