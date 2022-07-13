@@ -1,7 +1,9 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { setAlert } from "../../reducers/alert";
 
-export const Register = () => {
+export const Register = (props) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -16,7 +18,7 @@ export const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      console.log("Passwords do not match");
+      props.setAlert("Passwords do not match");
     } else {
       console.log("success");
     }
@@ -64,8 +66,10 @@ export const Register = () => {
         <input type='submit' className='btn btn-primary' value='Register' />
       </form>
       <p className='my-1'>
-        Already have an account? <Link to='login'>Sign In</Link>
+        Already have an account? <Link to='/login'>Sign In</Link>
       </p>
     </Fragment>
   );
 };
+
+export default connect(null, { setAlert })(Register);
