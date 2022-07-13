@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+export const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -52,5 +52,3 @@ const Login = () => {
     </Fragment>
   );
 };
-
-export default Login;
