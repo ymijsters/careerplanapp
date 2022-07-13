@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setAlert } from "../../reducers/alert";
 
 export const Register = (props) => {
@@ -15,10 +15,12 @@ export const Register = (props) => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  const dispatch = useDispatch();
+
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      props.setAlert("Passwords do not match");
+      dispatch(setAlert("Passwords do not match"));
     } else {
       console.log("success");
     }
@@ -72,4 +74,4 @@ export const Register = (props) => {
   );
 };
 
-export default connect(null, { setAlert })(Register);
+export default Register;
