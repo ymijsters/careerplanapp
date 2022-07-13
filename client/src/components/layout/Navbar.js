@@ -14,7 +14,7 @@ export const Navbar = () => {
           <Link to='profiles.html'>Be for you</Link>
         </li>
         <li>
-          <Link to='register.html'>Register</Link>
+          <Link to='/register'>Register</Link>
         </li>
         <li>
           <Link to='/login'>Login</Link>
