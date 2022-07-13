@@ -44,7 +44,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "http://ec2-54-170-60-196.eu-west-1.compute.amazonaws.com:5000",
   "devServer": {
     "compress": true,
     "disableHostCheck": true
