@@ -1,2 +1,3 @@
 cd /home/ec2-user
-npm i
+sudo npm i
+sudo npm i --prefix client

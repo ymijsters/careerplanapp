@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 const App = () => (
-  <Provider>
+  <Provider store={store}>
     <Router>
       <Fragment>
         <Navbar />
