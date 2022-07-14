@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -51,8 +50,4 @@ export const Login = () => {
       </p>
     </Fragment>
   );
-};
-
-Login.PropTypes = {
-  setAlert: PropTypes.func.isRequired,
 };
