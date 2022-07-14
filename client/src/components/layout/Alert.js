@@ -12,6 +12,5 @@ export const Alert = () => {
       </div>
     ));
   }
-  console.log(alertDiv);
   return alertDiv;
 };

@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addAlertWithTimout } from "../../reducers/alert";
+import { addAlertWithTimout, login } from "../../reducers/alert";
 
 export const Register = (props) => {
   const [formData, setFormData] = useState({
@@ -25,7 +25,11 @@ export const Register = (props) => {
         alertType: "danger",
       });
     } else {
-      console.log("success");
+      login(dispatch, {
+        email: email,
+        password: password,
+      });
+      //@TODO: Move to other page after login
     }
   };
 

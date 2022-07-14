@@ -16,17 +16,16 @@ const alertSlice = createSlice({
       const { value, index } = state.find(
         (alert) => (alert.id = action.payload)
       );
-      console.log(index);
       state.splice(index, 1);
     },
   },
 });
 
-export function addAlertWithTimout(dispatch, alert) {
+export const addAlertWithTimout = (alert) => async (dispatch) => {
   const id = uuidv4();
   dispatch(setAlert({ ...alert, id: id }));
   setTimeout(() => dispatch(removeAlert(id)), 5000);
-}
+};
 
 export const { setAlert, removeAlert } = alertSlice.actions;
 export default alertSlice.reducer;
