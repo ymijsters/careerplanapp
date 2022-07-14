@@ -2,13 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
-const dispatch = useDispatch();
-
 const alertSlice = createSlice({
   name: "alert",
   initialState: [],
   reducers: {
     setAlert(state, action) {
+      const dispatch = useDispatch();
       const id = uuidv4();
       state.push({
         msg: action.payload.msg,
