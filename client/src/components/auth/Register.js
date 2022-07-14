@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addAlertWithTimout, login } from "../../reducers/alert";
+import { addAlertWithTimout } from "../../reducers/alert";
+import { login } from "../../reducers/auth";
 
 export const Register = (props) => {
   const [formData, setFormData] = useState({
@@ -20,10 +21,12 @@ export const Register = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      addAlertWithTimout(dispatch, {
-        msg: "Passwords do not match",
-        alertType: "danger",
-      });
+      dispatch(
+        addAlertWithTimout({
+          msg: "Passwords do not match",
+          alertType: "danger",
+        })
+      );
     } else {
       login(dispatch, {
         email: email,
