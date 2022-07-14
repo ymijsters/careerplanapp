@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { removeAlert as removeAlertDispatch } from "./alert";
+
+const dispatch = useDispatch();
 
 const alertSlice = createSlice({
   name: "alert",
@@ -15,7 +16,7 @@ const alertSlice = createSlice({
         id: id,
       });
 
-      setTimeout(() => useDispatch(removeAlertDispatch(id)), 5000);
+      setTimeout(() => dispatch(removeAlert(id)), 5000);
     },
     removeAlert(state, action) {
       const { value, index } = state.find(
