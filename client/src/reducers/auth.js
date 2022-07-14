@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import api from "../utils/api";
-import { addAlertWithTimout } from "../../reducers/alert";
+import { addAlertWithTimout } from "./alert";
 
 const authSlice = createSlice({
   name: "auth",
