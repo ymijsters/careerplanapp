@@ -28,10 +28,12 @@ export const Register = (props) => {
         })
       );
     } else {
-      login(dispatch, {
-        email: email,
-        password: password,
-      });
+      dispatch(
+        login({
+          email: email,
+          password: password,
+        })
+      );
       //@TODO: Move to other page after login
     }
   };
