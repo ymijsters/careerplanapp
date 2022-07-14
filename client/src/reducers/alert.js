@@ -1,11 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
+import uuid from "uuid";
 
 const alertSlice = createSlice({
   name: "alert",
   initialState: [],
   reducers: {
     setAlert(state, action) {
-      state.push(action.payload);
+      const id = uuid.v4();
+      state.push({
+        msg: action.payload.msg,
+        alertType: action.payload.alertType,
+        id: id,
+      });
     },
     removeAlert(state, action) {
       const { value, index } = state.find((alert) => (alert = action.payload));

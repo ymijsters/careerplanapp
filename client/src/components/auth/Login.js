@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +20,6 @@ export const Login = () => {
 
   return (
     <Fragment>
-      <div className='alert alert-danger'>Invalid credentials</div>
       <h1 className='large text-primary'>Sign In</h1>
       <p className='lead'>
         <i className='fas fa-user'></i> Sign into Your Account
@@ -51,4 +51,8 @@ export const Login = () => {
       </p>
     </Fragment>
   );
+};
+
+Login.PropTypes = {
+  setAlert: PropTypes.func.isRequired,
 };

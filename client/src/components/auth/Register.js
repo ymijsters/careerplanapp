@@ -20,7 +20,9 @@ export const Register = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      dispatch(setAlert("Passwords do not match"));
+      dispatch(
+        setAlert({ msg: "Passwords do not match", alertType: "danger" })
+      );
     } else {
       console.log("success");
     }
@@ -28,6 +30,7 @@ export const Register = (props) => {
 
   return (
     <Fragment>
+      <Alert />
       <h1 className='large text-primary'>Sign Up</h1>
       <p className='lead'>
         <i className='fas fa-user'></i> Create Your Account
