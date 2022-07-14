@@ -6,13 +6,12 @@ export const Alert = () => {
   console.log(alerts);
   let alertDiv;
   if (alerts !== null && alerts.length > 0) {
-    alerts.map((alert) => {
-      alertDiv += (
-        <div key={alert.id} className={`alert alert-${alert.alertType}`}>
-          {alert.msg}
-        </div>
-      );
-    });
+    alertDiv = alerts.map((alert) => (
+      <div key={alert.id} className={`alert alert-${alert.alertType}`}>
+        {alert.msg}
+      </div>
+    ));
   }
+  console.log(alertDiv);
   return alertDiv;
 };
