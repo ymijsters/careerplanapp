@@ -16,6 +16,7 @@ const alertSlice = createSlice({
       const { value, index } = state.find(
         (alert) => (alert.id = action.payload)
       );
+      console.log(index);
       state.splice(index);
     },
   },
