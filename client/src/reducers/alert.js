@@ -18,7 +18,9 @@ const alertSlice = createSlice({
       setTimeout(() => useDispatch(removeAlertDispatch(id)), 5000);
     },
     removeAlert(state, action) {
-      const { value, index } = state.find((alert) => (alert = action.payload));
+      const { value, index } = state.find(
+        (alert) => (alert.id = action.payload)
+      );
       state.splice(index);
     },
   },
