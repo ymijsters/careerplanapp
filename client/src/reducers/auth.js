@@ -40,6 +40,7 @@ export const addUpdateUser = (user) => async (dispatch) => {
   try {
     const res = await api.post("/user", user);
     dispatch(setUser(user));
+    //@TODO: on register; store token
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {

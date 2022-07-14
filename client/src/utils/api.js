@@ -20,7 +20,7 @@ api.interceptors.response.use(
   (res) => res,
   (err) => {
     if (err.response.status === 401) {
-      store.dispatch({ type: LOGOUT });
+      console.log("LOGOUT HERE");
     }
     return Promise.reject(err);
   }
