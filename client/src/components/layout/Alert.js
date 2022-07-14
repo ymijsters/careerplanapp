@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 export const Alert = () => {
   const alerts = useSelector((state) => state.alert);
+  console.log(alerts);
   let alertDiv;
   if (alerts !== null && alerts.length > 0) {
     alerts.map((alert) => {
