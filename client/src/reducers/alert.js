@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
 const alertSlice = createSlice({
@@ -7,15 +6,11 @@ const alertSlice = createSlice({
   initialState: [],
   reducers: {
     setAlert(state, action) {
-      const dispatch = useDispatch();
-      const id = uuidv4();
       state.push({
         msg: action.payload.msg,
         alertType: action.payload.alertType,
-        id: id,
+        id: action.payload.id,
       });
-
-      setTimeout(() => dispatch(removeAlert(id)), 5000);
     },
     removeAlert(state, action) {
       const { value, index } = state.find(
@@ -25,6 +20,12 @@ const alertSlice = createSlice({
     },
   },
 });
+
+export function addAlertWithTimout(dispatch, alert) {
+  const id = uuidv4();
+  dispatch(setAlert({ ...alert, id: id }));
+  setTimeout(() => dispatch(removeAlert(id)), 5000);
+}
 
 export const { setAlert, removeAlert } = alertSlice.actions;
 export default alertSlice.reducer;
