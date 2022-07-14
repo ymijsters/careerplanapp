@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import api from "../utils/api";
+import { addAlertWithTimout } from "../../reducers/alert";
 
 const authSlice = createSlice({
   name: "auth",
@@ -42,7 +43,9 @@ export const addUpdateUser = (user) => async (dispatch) => {
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      errors.forEach((error) =>
+        dispatch(addAlertWithTimout({ msg: error.msg, alertType: "danger" }))
+      );
     }
   }
 };
