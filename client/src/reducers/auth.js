@@ -6,7 +6,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     token: localStorage.getItem("token"),
-    isAuthenticated: null,
+    isAuthenticated: false,
     loading: true,
     user: null,
   },
@@ -49,6 +49,7 @@ export const addUpdateUser = (user) => async (dispatch) => {
     dispatch(authSuccess(res.data));
     //@TODO: on register; store token
   } catch (err) {
+    console.log(err);
     const errors = err.response.data.errors;
     if (errors) {
       errors.forEach((error) =>
