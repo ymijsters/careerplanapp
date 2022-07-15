@@ -21,11 +21,11 @@ const alertSlice = createSlice({
   },
 });
 
+export const { setAlert, removeAlert } = alertSlice.actions;
+export default alertSlice.reducer;
+
 export function addAlertWithTimout(dispatch, alert) {
   const id = uuidv4();
   dispatch(setAlert({ ...alert, id: id }));
   setTimeout(() => dispatch(removeAlert(id)), 5000);
 }
-
-export const { setAlert, removeAlert } = alertSlice.actions;
-export default alertSlice.reducer;
