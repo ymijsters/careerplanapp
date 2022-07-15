@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { login } from "../../reducers/auth";
 
 export const Login = () => {
@@ -11,6 +11,7 @@ export const Login = () => {
 
   const { email, password } = formData;
 
+  const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 
   const onChange = (e) =>

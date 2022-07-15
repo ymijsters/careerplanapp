@@ -14,7 +14,6 @@ export const Register = (props) => {
   const { email, password, password2 } = formData;
 
   const dispatch = useDispatch();
-
   const auth = useSelector((state) => state.auth);
 
   const onChange = (e) =>
