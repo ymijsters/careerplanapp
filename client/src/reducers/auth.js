@@ -24,7 +24,7 @@ const authSlice = createSlice({
     },
   },
 });
-
+/*
 //Potentially move these functions to another file
 export function login(dispatch, user) {
   //@TODO: perform login through Axios
@@ -55,7 +55,7 @@ export function getUser(dispatch, token) {
   //@TODO get ID from token and Axios request user for ID
   const user = {};
   dispatch(setUser(user));
-}
+}*/
 
 export const { setUser, removeUser } = authSlice.actions;
 export default authSlice.reducer;
