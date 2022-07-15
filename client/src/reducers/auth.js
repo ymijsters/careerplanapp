@@ -74,5 +74,6 @@ export const getUser = () => async (dispatch) => {
   }
 };
 
-export const { setUser, removeUser, setLoading } = authSlice.actions;
+export const { setUser, removeUser, setLoading, authSuccess } =
+  authSlice.actions;
 export default authSlice.reducer;
