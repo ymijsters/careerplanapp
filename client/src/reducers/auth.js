@@ -11,11 +11,15 @@ const authSlice = createSlice({
     user: null,
   },
   reducers: {
+    setLoading(state, action) {
+      state.loading = true;
+    },
     setUser(state, action) {
       console.log(action.payload);
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isAuthenticated = true;
+      state.loading = false;
       console.log(state);
     },
     removeUser(state) {
@@ -39,6 +43,7 @@ export const logout = () => async (dispatch) => {
 
 export const addUpdateUser = (user) => async (dispatch) => {
   try {
+    dispatch(setLoading());
     const res = await api.post("/user", user);
     console.log(res);
     dispatch(setUser({ user: user, token: res.data.token }));
@@ -59,5 +64,5 @@ export function getUser(dispatch, token) {
   dispatch(setUser(user));
 }
 
-export const { setUser, removeUser } = authSlice.actions;
+export const { setUser, removeUser, setLoading } = authSlice.actions;
 export default authSlice.reducer;
