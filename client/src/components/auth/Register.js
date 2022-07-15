@@ -40,7 +40,6 @@ export const Register = (props) => {
           password: password,
         })
       );
-      //@TODO: Move to other page after login
     }
   };
 

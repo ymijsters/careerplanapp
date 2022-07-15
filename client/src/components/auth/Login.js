@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { login } from "../../reducers/auth";
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -9,13 +11,19 @@ export const Login = () => {
 
   const { email, password } = formData;
 
+  const auth = useSelector((state) => state.auth);
+
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("success");
+    dispatch(login(email, password));
   };
+
+  if (auth.isAuthenticated) {
+    return <Navigate to='/dashboard' />;
+  }
 
   return (
     <Fragment>

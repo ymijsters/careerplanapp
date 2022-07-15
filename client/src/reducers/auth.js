@@ -23,29 +23,40 @@ const authSlice = createSlice({
       state.loading = false;
     },
     removeUser(state) {
-      state.auth.user = {};
-      state.auth.isAuthenticated = false;
+      state.user = {};
+      state.isAuthenticated = false;
+      state.token = "";
     },
   },
 });
 
 //Potentially move these functions to another file
-export const login = (user) => async (dispatch) => {
-  //@TODO: perform login through Axios
-  //@TODO: Set the token
+export const login = (email, password) => async (dispatch) => {
+  const body = { email, password };
+  try {
+    const res = await api.post("/auth", body);
+    dispatch(authSuccess(res.data));
+    dispatch(getUser());
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) =>
+        dispatch(addAlertWithTimout({ msg: error.msg, alertType: "danger" }))
+      );
+    }
+  }
+
   console.log(user);
 };
 
 export const logout = () => async (dispatch) => {
   dispatch(removeUser());
-  //@TODO: Move to new page?
 };
 
 export const addUpdateUser = (user) => async (dispatch) => {
   try {
     dispatch(setLoading());
     const res = await api.post("/user", user);
-    console.log(res);
     dispatch(authSuccess(res.data));
     dispatch(getUser());
     //@TODO: on register; store token
