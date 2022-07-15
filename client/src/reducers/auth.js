@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-//import axios from "axios";
 //import api from "../utils/api";
 //import { addAlertWithTimout } from "./alert";
 
