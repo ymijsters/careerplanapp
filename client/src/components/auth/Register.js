@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addAlertWithTimout } from "../../reducers/alert";
-//import { login } from "../../reducers/auth";
+import { login } from "../../reducers/auth";
 
 export const Register = (props) => {
   const [formData, setFormData] = useState({

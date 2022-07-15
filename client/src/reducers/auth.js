@@ -25,10 +25,11 @@ const authSlice = createSlice({
 });
 
 //Potentially move these functions to another file
-export function login(dispatch, user) {
+export const login = (user) => async (dispatch) => {
   //@TODO: perform login through Axios
   //@TODO: Set the token
-}
+  console.log(user);
+};
 
 export function logout(dispatch) {
   dispatch(removeUser());
