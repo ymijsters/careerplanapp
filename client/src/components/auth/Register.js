@@ -13,6 +13,8 @@ export const Register = (props) => {
 
   const { email, password, password2 } = formData;
 
+  const dispatch = useDispatch();
+
   const auth = useSelector((state) => state.auth);
 
   const onChange = (e) =>
@@ -21,8 +23,6 @@ export const Register = (props) => {
   if (auth.isAuthenticated) {
     return <Navigate to='/dashboard' />;
   }
-
-  const dispatch = useDispatch();
 
   const onSubmit = async (e) => {
     e.preventDefault();
