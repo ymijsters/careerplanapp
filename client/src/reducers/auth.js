@@ -45,8 +45,6 @@ export const login = (email, password) => async (dispatch) => {
       );
     }
   }
-
-  console.log(user);
 };
 
 export const logout = () => async (dispatch) => {
