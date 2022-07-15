@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-//import api from "../utils/api";
+import api from "../utils/api";
 import { addAlertWithTimout } from "./alert";
 
 const authSlice = createSlice({
@@ -31,13 +31,13 @@ export const login = (user) => async (dispatch) => {
   console.log(user);
 };
 
-export function logout(dispatch) {
+export const logout = () => async (dispatch) => {
   dispatch(removeUser());
   //@TODO: Move to new page?
-}
+};
 
 export const addUpdateUser = (user) => async (dispatch) => {
-  /*try {
+  try {
     const res = await api.post("/user", user);
     dispatch(setUser(user));
     //@TODO: on register; store token
@@ -48,7 +48,7 @@ export const addUpdateUser = (user) => async (dispatch) => {
         dispatch(addAlertWithTimout({ msg: error.msg, alertType: "danger" }))
       );
     }
-  }*/
+  }
 };
 
 export function getUser(dispatch, token) {
