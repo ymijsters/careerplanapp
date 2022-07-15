@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 //import api from "../utils/api";
-//import { addAlertWithTimout } from "./alert";
+import { addAlertWithTimout } from "./alert";
 
 const authSlice = createSlice({
   name: "auth",
@@ -23,7 +23,7 @@ const authSlice = createSlice({
     },
   },
 });
-/*
+
 //Potentially move these functions to another file
 export function login(dispatch, user) {
   //@TODO: perform login through Axios
@@ -36,7 +36,7 @@ export function logout(dispatch) {
 }
 
 export const addUpdateUser = (user) => async (dispatch) => {
-  try {
+  /*try {
     const res = await api.post("/user", user);
     dispatch(setUser(user));
     //@TODO: on register; store token
@@ -47,14 +47,14 @@ export const addUpdateUser = (user) => async (dispatch) => {
         dispatch(addAlertWithTimout({ msg: error.msg, alertType: "danger" }))
       );
     }
-  }
+  }*/
 };
 
 export function getUser(dispatch, token) {
   //@TODO get ID from token and Axios request user for ID
   const user = {};
   dispatch(setUser(user));
-}*/
+}
 
 export const { setUser, removeUser } = authSlice.actions;
 export default authSlice.reducer;
