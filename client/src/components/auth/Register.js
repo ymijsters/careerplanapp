@@ -13,8 +13,14 @@ export const Register = (props) => {
 
   const { email, password, password2 } = formData;
 
+  const auth = useSelector((state) => state.auth);
+
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  if (auth.isAuthenticated) {
+    return <Navigate to='/dashboard' />;
+  }
 
   const dispatch = useDispatch();
 

@@ -15,12 +15,12 @@ const authSlice = createSlice({
       state.loading = true;
     },
     setUser(state, action) {
-      console.log(action.payload);
       state.user = action.payload.user;
+    },
+    authSuccess(state, action) {
       state.token = action.payload.token;
       state.isAuthenticated = true;
       state.loading = false;
-      console.log(state);
     },
     removeUser(state) {
       state.auth.user = {};
@@ -46,7 +46,7 @@ export const addUpdateUser = (user) => async (dispatch) => {
     dispatch(setLoading());
     const res = await api.post("/user", user);
     console.log(res);
-    dispatch(setUser({ user: user, token: res.data.token }));
+    dispatch(authSuccess(res.data));
     //@TODO: on register; store token
   } catch (err) {
     const errors = err.response.data.errors;
@@ -58,11 +58,20 @@ export const addUpdateUser = (user) => async (dispatch) => {
   }
 };
 
-export function getUser(dispatch, token) {
+export const getUser = () => async (dispatch) => {
   //@TODO get ID from token and Axios request user for ID
-  const user = {};
-  dispatch(setUser(user));
-}
+  try {
+    const res = await api.get("/auth");
+    dispatch(setUser(res.data));
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) =>
+        dispatch(addAlertWithTimout({ msg: error.msg, alertType: "danger" }))
+      );
+    }
+  }
+};
 
 export const { setUser, removeUser, setLoading } = authSlice.actions;
 export default authSlice.reducer;
