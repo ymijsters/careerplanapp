@@ -4,17 +4,16 @@ import { addAlertWithTimout } from "./alert";
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: [
-    {
-      token: localStorage.getItem("token"),
-      isAuthenticated: null,
-      loading: true,
-      user: null,
-    },
-  ],
+  initialState: {
+    token: localStorage.getItem("token"),
+    isAuthenticated: null,
+    loading: true,
+    user: null,
+  },
   reducers: {
     setUser(state, action) {
-      state.user.user = action.payload;
+      state.user.user = action.payload.user;
+      state.user.token = action.payload.token;
       state.user.isAuthenticated = true;
     },
     removeUser(state) {
@@ -39,7 +38,8 @@ export const logout = () => async (dispatch) => {
 export const addUpdateUser = (user) => async (dispatch) => {
   try {
     const res = await api.post("/user", user);
-    dispatch(setUser(user));
+    console.log(res);
+    dispatch(setUser({ user: user, token: res.data.token }));
     //@TODO: on register; store token
   } catch (err) {
     const errors = err.response.data.errors;
