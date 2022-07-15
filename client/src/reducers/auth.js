@@ -47,6 +47,7 @@ export const addUpdateUser = (user) => async (dispatch) => {
     const res = await api.post("/user", user);
     console.log(res);
     dispatch(authSuccess(res.data));
+    dispatch(getUser());
     //@TODO: on register; store token
   } catch (err) {
     console.log(err);
