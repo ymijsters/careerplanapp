@@ -37,7 +37,6 @@ export const Login = () => {
                   className='form w-100'
                   noValidate='novalidate'
                   id='kt_sign_in_form'
-                  data-kt-redirect-url='../../demo11/dist/index.html'
                   action='#'
                 >
                   <div className='text-center mb-11'>
@@ -52,11 +51,7 @@ export const Login = () => {
                         href='#'
                         className='btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100'
                       >
-                        <img
-                          alt='Logo'
-                          src='assets/media/svg/brand-logos/google-icon.svg'
-                          className='h-15px me-3'
-                        />
+                        <img alt='Logo' className='h-15px me-3' />
                         Sign in with Google
                       </a>
                     </div>
@@ -67,12 +62,10 @@ export const Login = () => {
                       >
                         <img
                           alt='Logo'
-                          src='assets/media/svg/brand-logos/apple-black.svg'
                           className='theme-light-show h-15px me-3'
                         />
                         <img
                           alt='Logo'
-                          src='assets/media/svg/brand-logos/apple-black-dark.svg'
                           className='theme-dark-show h-15px me-3'
                         />
                         Sign in with Apple
@@ -167,21 +160,13 @@ export const Login = () => {
               </div>
             </div>
           </div>
-          <div
-            className='d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2'
-            style='background-image: url(assets/media/misc/auth-bg.png)'
-          >
+          <div className='d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2'>
             <div className='d-flex flex-column flex-center py-15 px-5 px-md-15 w-100'>
               <a href='../../demo11/dist/index.html' className='mb-12'>
-                <img
-                  alt='Logo'
-                  src='assets/media/logos/custom-1.png'
-                  className='h-75px'
-                />
+                <img alt='Logo' className='h-75px' />
               </a>
               <img
                 className='mx-auto w-275px w-md-50 w-xl-500px mb-10 mb-lg-20'
-                src='assets/media/misc/auth-screens.png'
                 alt=''
               />
               <h1 className='text-white fs-2qx fw-bolder text-center mb-7'>
