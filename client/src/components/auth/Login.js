@@ -35,7 +35,7 @@ export const Login = () => {
               <div className='w-lg-500px p-10'>
                 <form
                   className='form w-100'
-                  novalidate='novalidate'
+                  noValidate='novalidate'
                   id='kt_sign_in_form'
                   data-kt-redirect-url='../../demo11/dist/index.html'
                   action='#'
@@ -89,7 +89,7 @@ export const Login = () => {
                       type='text'
                       placeholder='Email'
                       name='email'
-                      autocomplete='off'
+                      autoComplete='off'
                       className='form-control bg-transparent'
                     />
                   </div>
@@ -99,7 +99,7 @@ export const Login = () => {
                       type='password'
                       placeholder='Password'
                       name='password'
-                      autocomplete='off'
+                      autoComplete='off'
                       className='form-control bg-transparent'
                     />
                   </div>
