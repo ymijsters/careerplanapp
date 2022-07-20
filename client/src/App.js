@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import "./App.css";
+import "./assets/css/style.bundle.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/layout/Navbar";
 import { Landing } from "./components/layout/Landing";
