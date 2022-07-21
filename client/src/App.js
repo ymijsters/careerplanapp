@@ -16,7 +16,10 @@ const App = () => (
   <Provider store={store}>
     <Router>
       <Fragment>
-        <div className='d-flex flex-column flex-root'>
+        <div
+          className='d-flex flex-column flex-root'
+          style={{ height: "100%" }}
+        >
           <Routes>
             <Route path='/' element={<Landing />} />
             <Route path='/register' element={<Register />} />
