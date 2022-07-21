@@ -2,7 +2,12 @@ import React from "react";
 
 export const AuthAside = () => {
   return (
-    <div class='d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2'>
+    <div
+      class='d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2'
+      style={{
+        backgroundImage: 'url("./img/auth-bg.png");',
+      }}
+    >
       <div class='d-flex flex-column flex-center py-15 px-5 px-md-15 w-100'>
         <a href='../../demo11/dist/index.html' class='mb-12'>
           <img

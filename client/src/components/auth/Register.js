@@ -58,11 +58,11 @@ export const Register = (props) => {
                 <div className='text-center mb-11'>
                   <h1 className='text-dark fw-bolder mb-3'>Sign Up</h1>
                   <div className='text-gray-500 fw-semibold fs-6'>
-                    Your Social Campaigns
+                    Career Plan App
                   </div>
                 </div>
                 <div className='separator separator-content my-14'>
-                  <span className='w-125px text-gray-500 fw-semibold fs-7'>
+                  <span className='w-200px text-gray-500 fw-semibold fs-7'>
                     Sign up with email
                   </span>
                 </div>
@@ -98,20 +98,6 @@ export const Register = (props) => {
                         <i className='bi bi-eye fs-2 d-none'></i>
                       </span>
                     </div>
-
-                    <div
-                      className='d-flex align-items-center mb-3'
-                      data-kt-password-meter-control='highlight'
-                    >
-                      <div className='flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2'></div>
-                      <div className='flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2'></div>
-                      <div className='flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2'></div>
-                      <div className='flex-grow-1 bg-secondary bg-active-success rounded h-5px'></div>
-                    </div>
-                  </div>
-                  <div className='text-muted'>
-                    Use 6 or more characters with a mix of letters, numbers
-                    &amp; symbols.
                   </div>
                 </div>
                 <div className='fv-row mb-8'>
