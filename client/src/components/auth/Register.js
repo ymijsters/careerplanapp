@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addAlertWithTimout } from "../../reducers/alert";
 import { addUpdateUser } from "../../reducers/auth";
-import { Aside } from "./Aside";
+import { AuthAside } from "./AuthAside";
 
 export const Register = (props) => {
   const [formData, setFormData] = useState({
@@ -101,7 +101,7 @@ export const Register = (props) => {
           </div>
         </div>
       </div>
-      <Aside />
+      <AuthAside />
     </Fragment>
   );
 };

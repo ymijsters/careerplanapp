@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { login } from "../../reducers/auth";
-import { Aside } from "./Aside";
+import { AuthAside } from "./AuthAside";
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -29,7 +29,6 @@ export const Login = () => {
 
   return (
     <Fragment>
-      <Aside />
       <div className='d-flex flex-column flex-lg-row flex-column-fluid'>
         <div className='d-flex flex-column flex-lg-row-fluid py-10'>
           <div className='d-flex flex-center flex-column flex-column-fluid'>
@@ -121,6 +120,7 @@ export const Login = () => {
           </div>
         </div>
       </div>
+      <AuthAside />
     </Fragment>
   );
 };
