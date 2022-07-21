@@ -16,7 +16,7 @@ const App = () => (
   <Provider store={store}>
     <Router>
       <Fragment>
-        <div class='d-flex flex-column flex-root'>
+        <div className='d-flex flex-column flex-root'>
           <Routes>
             <Route path='/' element={<Landing />} />
             <Route path='/register' element={<Register />} />

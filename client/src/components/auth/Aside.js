@@ -5,7 +5,6 @@ export const Aside = () => {
     <div className='d-flex flex-column flex-lg-row-auto w-lg-350px w-xl-500px'>
       <div
         className='d-flex flex-column position-lg-fixed top-0 bottom-0 w-lg-350px w-xl-500px scroll-y bgi-size-cover bgi-position-center'
-        style='background-image: url(assets/media/misc/auth-bg.png)'
       >
         <div className='d-flex flex-center py-10 py-lg-20 mt-lg-20'>
           <a href='../../demo11/dist/index.html'>
