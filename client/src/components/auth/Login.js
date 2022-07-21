@@ -85,8 +85,8 @@ export const Login = () => {
                 <input
                   type='password'
                   placeholder='Password'
-                  name='password2'
-                  value={password2}
+                  name='password'
+                  value={password}
                   onChange={(e) => onChange(e)}
                   minLength='6'
                   required
