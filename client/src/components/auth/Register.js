@@ -86,6 +86,7 @@ export const Register = (props) => {
       <p className='my-1'>
         Already have an account? <Link to='/login'>Sign In</Link>
       </p>
+      <Aside />
     </Fragment>
   );
 };

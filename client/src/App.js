@@ -16,11 +16,17 @@ const App = () => (
   <Provider store={store}>
     <Router>
       <Fragment>
-        <Routes>
-          <Route path='/' element={<Landing />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-        </Routes>
+        <div class='d-flex flex-column flex-root'>
+          <Routes>
+            <Route path='/' element={<Landing />} />
+          </Routes>
+          <div class='d-flex flex-column flex-lg-row flex-column-fluid'>
+            <Routes>
+              <Route path='/register' element={<Register />} />
+              <Route path='/login' element={<Login />} />
+            </Routes>
+          </div>
+        </div>
       </Fragment>
     </Router>
   </Provider>
