@@ -1,5 +1,7 @@
 import React from "react";
 import bg from "../../img/auth-bg.png";
+import { Link } from "react-router-dom";
+
 export const AuthAside = () => {
   return (
     <div
