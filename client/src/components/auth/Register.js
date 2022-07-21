@@ -45,51 +45,60 @@ export const Register = (props) => {
 
   return (
     <Fragment>
-      <div className='d-flex flex-column flex-lg-row-fluid py-10'>
-        <div className='d-flex flex-center flex-column flex-column-fluid'>
-          <div className='w-lg-650px w-xl-700px p-10 p-lg-15 mx-auto'></div>
-          <h1 className='large text-primary'>Sign Up</h1>
-          <p className='lead'>
-            <i className='fas fa-user'></i> Create Your Account
-          </p>
-          <form className='form' onSubmit={(e) => onSubmit(e)}>
-            <div className='form-group'>
+      <div
+        className='d-flex flex-column flex-lg-row flex-column-fluid stepper stepper-pills stepper-column stepper-multistep'
+        id='kt_create_account_stepper'
+      >
+        <div className='d-flex flex-column flex-lg-row-fluid py-10'>
+          <div className='d-flex flex-center flex-column flex-column-fluid'>
+            <div className='w-lg-650px w-xl-700px p-10 p-lg-15 mx-auto'></div>
+            <h1 className='large text-primary'>Sign Up</h1>
+            <p className='lead'>
+              <i className='fas fa-user'></i> Create Your Account
+            </p>
+            <form className='form' onSubmit={(e) => onSubmit(e)}>
+              <div className='form-group'>
+                <input
+                  type='email'
+                  placeholder='Email Address'
+                  value={email}
+                  onChange={(e) => onChange(e)}
+                  name='email'
+                  required
+                />
+              </div>
+              <div className='form-group'>
+                <input
+                  type='password'
+                  placeholder='Password'
+                  name='password'
+                  value={password}
+                  onChange={(e) => onChange(e)}
+                  minLength='6'
+                  required
+                />
+              </div>
+              <div className='form-group'>
+                <input
+                  type='password'
+                  placeholder='Confirm Password'
+                  name='password2'
+                  value={password2}
+                  onChange={(e) => onChange(e)}
+                  minLength='6'
+                  required
+                />
+              </div>
               <input
-                type='email'
-                placeholder='Email Address'
-                value={email}
-                onChange={(e) => onChange(e)}
-                name='email'
-                required
+                type='submit'
+                className='btn btn-primary'
+                value='Register'
               />
-            </div>
-            <div className='form-group'>
-              <input
-                type='password'
-                placeholder='Password'
-                name='password'
-                value={password}
-                onChange={(e) => onChange(e)}
-                minLength='6'
-                required
-              />
-            </div>
-            <div className='form-group'>
-              <input
-                type='password'
-                placeholder='Confirm Password'
-                name='password2'
-                value={password2}
-                onChange={(e) => onChange(e)}
-                minLength='6'
-                required
-              />
-            </div>
-            <input type='submit' className='btn btn-primary' value='Register' />
-          </form>
-          <p className='my-1'>
-            Already have an account? <Link to='/login'>Sign In</Link>
-          </p>
+            </form>
+            <p className='my-1'>
+              Already have an account? <Link to='/login'>Sign In</Link>
+            </p>
+          </div>
         </div>
       </div>
       <Aside />

@@ -9,11 +9,7 @@ export const Aside = () => {
       >
         <div className='d-flex flex-center py-10 py-lg-20 mt-lg-20'>
           <a href='../../demo11/dist/index.html'>
-            <img
-              alt='Logo'
-              src='assets/media/logos/custom-1.png'
-              className='h-70px'
-            />
+            <img alt='Logo' className='h-70px' />
           </a>
         </div>
         <div className='d-flex flex-row-fluid justify-content-center p-10'>
