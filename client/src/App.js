@@ -11,6 +11,7 @@ import { Alert } from "./components/layout/Alert";
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
+import { CreateProfileFlow } from "./components/profile/CreateProfileFlow";
 
 const App = () => (
   <Provider store={store}>
@@ -24,6 +25,7 @@ const App = () => (
             <Route path='/' element={<Landing />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/createprofile' element={<CreateProfileFlow />} />
           </Routes>
         </div>
       </Fragment>
