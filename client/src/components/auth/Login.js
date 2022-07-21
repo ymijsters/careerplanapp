@@ -29,8 +29,9 @@ export const Login = () => {
 
   return (
     <Fragment>
-      <div className='d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1'>
-        <div className='d-flex flex-center flex-column flex-lg-row-fluid'>
+      <Aside />
+      <div className='d-flex flex-column flex-lg-row-fluid py-10'>
+        <div className='d-flex flex-center flex-column flex-column-fluid'>
           <div className='w-lg-500px p-10'>
             <form
               className='form w-100'
@@ -118,7 +119,6 @@ export const Login = () => {
           </div>
         </div>
       </div>
-      <Aside />
     </Fragment>
   );
 };
