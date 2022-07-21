@@ -43,27 +43,6 @@ export const Login = () => {
                   Your Social Campaigns
                 </div>
               </div>
-              <div className='row g-3 mb-9'>
-                <div className='col-md-6'>
-                  <a
-                    href='#'
-                    className='btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100'
-                  >
-                    <img alt='Logo' className='h-15px me-3' />
-                    Sign in with Google
-                  </a>
-                </div>
-                <div className='col-md-6'>
-                  <a
-                    href='#'
-                    className='btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100'
-                  >
-                    <img alt='Logo' className='theme-light-show h-15px me-3' />
-                    <img alt='Logo' className='theme-dark-show h-15px me-3' />
-                    Sign in with Apple
-                  </a>
-                </div>
-              </div>
               <div className='separator separator-content my-14'>
                 <span className='w-125px text-gray-500 fw-semibold fs-7'>
                   Or with email
@@ -96,12 +75,9 @@ export const Login = () => {
 
               <div className='d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8'>
                 <div></div>
-                <a
-                  href='../../demo11/dist/authentication/layouts/corporate/reset-password.html'
-                  className='link-primary'
-                >
+                <Link to='#' className='link-primary'>
                   Forgot Password ?
-                </a>
+                </Link>
               </div>
 
               <div className='d-grid mb-10'>
@@ -121,39 +97,24 @@ export const Login = () => {
 
               <div className='text-gray-500 text-center fw-semibold fs-6'>
                 Not a Member yet?
-                <a
-                  href='../../demo11/dist/authentication/layouts/corporate/sign-up.html'
-                  className='link-primary'
-                >
+                <Link to='/register' className='link-primary'>
                   Sign up
-                </a>
+                </Link>
               </div>
             </form>
           </div>
         </div>
         <div className='d-flex flex-center flex-wrap px-5'>
           <div className='d-flex fw-semibold text-primary fs-base'>
-            <a
-              href='../../demo11/dist/pages/team.html'
-              className='px-5'
-              target='_blank'
-            >
+            <Link to='#' className='px-5' target='_blank'>
               Terms
-            </a>
-            <a
-              href='../../demo11/dist/pages/pricing/column.html'
-              className='px-5'
-              target='_blank'
-            >
+            </Link>
+            <Link to='#' className='px-5' target='_blank'>
               Plans
-            </a>
-            <a
-              href='../../demo11/dist/pages/contact.html'
-              className='px-5'
-              target='_blank'
-            >
+            </Link>
+            <Link to='#' className='px-5' target='_blank'>
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </div>

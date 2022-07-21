@@ -3,6 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addAlertWithTimout } from "../../reducers/alert";
 import { addUpdateUser } from "../../reducers/auth";
+import { Aside } from "./Aside";
 
 export const Register = (props) => {
   const [formData, setFormData] = useState({
