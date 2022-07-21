@@ -45,11 +45,8 @@ export const Register = (props) => {
 
   return (
     <Fragment>
-      <div
-        className='d-flex flex-column flex-lg-row flex-column-fluid stepper stepper-pills stepper-column stepper-multistep'
-        id='kt_create_account_stepper'
-      >
-        <div className='d-flex flex-column flex-lg-row-fluid py-10'>
+      <div class='d-flex flex-column flex-lg-row flex-column-fluid'>
+        <div class='d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1'>
           <div className='d-flex flex-center flex-column flex-column-fluid'>
             <div className='w-lg-650px w-xl-700px p-10 p-lg-15 mx-auto'></div>
             <h1 className='large text-primary'>Sign Up</h1>
@@ -100,8 +97,8 @@ export const Register = (props) => {
             </p>
           </div>
         </div>
+        <AuthAside />
       </div>
-      <AuthAside />
     </Fragment>
   );
 };
