@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAlertWithTimout } from "../../reducers/alert";
 import { addUpdateUser } from "../../reducers/auth";
 import { AuthAside } from "./AuthAside";
+import { Alert } from "../layout/Alert";
 
 export const Register = (props) => {
   const [formData, setFormData] = useState({
@@ -45,8 +46,12 @@ export const Register = (props) => {
 
   return (
     <Fragment>
-      <div className='d-flex flex-column flex-lg-row flex-column-fluid'>
+      <div
+        className='d-flex flex-column flex-lg-row flex-column-fluid'
+        style={{ height: "100%" }}
+      >
         <div className='d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1'>
+          <Alert />
           <div className='d-flex flex-center flex-column flex-lg-row-fluid'>
             <div className='w-lg-500px p-10'>
               <form
