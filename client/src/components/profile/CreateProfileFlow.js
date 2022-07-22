@@ -11,7 +11,7 @@ export const CreateProfileFlow = () => {
     if (step == 1) {
       newStep = 2;
     }
-    setStep({ step: newStep });
+    setStep(newStep);
   };
 
   return (
@@ -27,6 +27,8 @@ export const CreateProfileFlow = () => {
               switch (step) {
                 case 1:
                   return <PersonalDataStep />;
+                default:
+                  return <p>Default Return here</p>;
               }
             }}
             <p onClick={() => nextStep()}>Click for next step</p>
