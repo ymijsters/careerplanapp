@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { ProfileAside } from "./ProfileAside";
+import { PersonalDataStep } from "./PersonalDataStep";
 
 export const CreateProfileFlow = () => {
   const [step, setStep] = useState({
