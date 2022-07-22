@@ -3,18 +3,20 @@ import React, { useState } from "react";
 export const PersonalDataStep = () => {
   const [formData, setFormData] = useState({
     name: "",
-    dateOfBirth: "",
     currentCompany: "",
     unemployed: false,
     currentFunction: "",
   });
 
-  const { name, dateOfBirth, currentCompany, unemployed, currentFunction } =
-    formData;
+  const { name, currentCompany, unemployed, currentFunction } = formData;
 
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-
+  const onChange = (e) => {
+    if (e.target.type === "checkbox") {
+      setFormDate({ ...formData, [e.target.name]: e.target.checked });
+    } else {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
+  };
   return (
     <form
       className='my-auto pb-5'
@@ -48,7 +50,7 @@ export const PersonalDataStep = () => {
             <input
               type='text'
               className='form-control form-control-lg form-control-solid'
-              name='account_name'
+              name='name'
               placeholder=''
               onChange={(e) => onChange(e)}
               value={name}
@@ -56,12 +58,41 @@ export const PersonalDataStep = () => {
           </div>
 
           <div className='mb-10 fv-row'>
-            <label className='form-label mb-3'>Date of Birth</label>
+            <label className='form-label mb-3'>Your Current Company</label>
             <input
-              className='form-control form-control-solid'
-              name='calendar_event_start_date'
-              placeholder='Pick a start date'
-              id='kt_calendar_datepicker_start_date'
+              type='text'
+              className='form-control form-control-lg form-control-solid'
+              name='currentCompany'
+              placeholder=''
+              onChange={(e) => onChange(e)}
+              value={currentCompany}
+            />
+          </div>
+
+          <div className='fv-row mb-8'>
+            <label className='form-check form-check-inline'>
+              <input
+                className='form-check-input'
+                type='checkbox'
+                name='unemployed'
+                value={unemployed ? 1 : 0}
+                onChange={(e) => onChange(e)}
+              />
+              <span className='form-check-label fw-semibold text-gray-700 fs-base ms-1'>
+                I am currently not employed
+              </span>
+            </label>
+          </div>
+
+          <div className='mb-10 fv-row'>
+            <label className='form-label mb-3'>Your Current Job Title</label>
+            <input
+              type='text'
+              className='form-control form-control-lg form-control-solid'
+              name='currentFunction'
+              placeholder=''
+              onChange={(e) => onChange(e)}
+              value={currentFunction}
             />
           </div>
         </div>
