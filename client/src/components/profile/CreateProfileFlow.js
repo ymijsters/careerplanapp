@@ -26,7 +26,7 @@ export const CreateProfileFlow = () => {
             {(() => {
               switch (step) {
                 case 1:
-                  return <PersonalDataStep nextStep={this.nextStep} />;
+                  return <PersonalDataStep nextStep={() => nextStep()} />;
                 default:
                   return <p>Default Return here</p>;
               }
