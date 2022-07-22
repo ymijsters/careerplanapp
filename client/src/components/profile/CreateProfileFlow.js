@@ -7,7 +7,7 @@ export const CreateProfileFlow = () => {
   const [step, setStep] = useState(1);
 
   const nextStep = (e) => {
-    const newStep = 1;
+    let newStep = 1;
     if (step == 1) {
       newStep = 2;
     }
