@@ -2,6 +2,9 @@ import React from "react";
 import bg from "../../img/auth-bg.png";
 
 export const ProfileAside = (props) => {
+  const { step } = props;
+  console.log(step);
+
   return (
     <div className='d-flex flex-column flex-lg-row-auto w-lg-350px w-xl-500px'>
       <div
@@ -18,7 +21,7 @@ export const ProfileAside = (props) => {
         <div className='d-flex flex-row-fluid justify-content-center p-10'>
           <div className='stepper-nav'>
             <div
-              className={`stepper-item ${props.step == 1 ? "current" : ""}`}
+              className={`stepper-item ${step == 1 ? "current" : ""}`}
               data-kt-stepper-element='nav'
             >
               <div className='stepper-wrapper'>
@@ -37,7 +40,7 @@ export const ProfileAside = (props) => {
             </div>
 
             <div
-              className={`stepper-item ${props.step == 2 ? "current" : ""}`}
+              className={`stepper-item ${step == 2 ? "current" : ""}`}
               data-kt-stepper-element='nav'
             >
               <div className='stepper-wrapper'>

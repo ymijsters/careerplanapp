@@ -4,11 +4,9 @@ import { PersonalDataStep } from "./PersonalDataStep";
 import { createNextState } from "@reduxjs/toolkit";
 
 export const CreateProfileFlow = () => {
-  const [step, setStep] = useState({
-    step: 1,
-  });
+  const [step, setStep] = useState(1);
 
-  const onChange = (e) => {
+  const nextStep = (e) => {
     const newStep = 1;
     if (step == 1) {
       newStep = 2;
