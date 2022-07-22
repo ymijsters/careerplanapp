@@ -1,7 +1,7 @@
 import React from "react";
 import bg from "../../img/auth-bg.png";
 
-export const ProfileAside = () => {
+export const ProfileAside = (props) => {
   return (
     <div className='d-flex flex-column flex-lg-row-auto w-lg-350px w-xl-500px'>
       <div
@@ -17,7 +17,10 @@ export const ProfileAside = () => {
         </div>
         <div className='d-flex flex-row-fluid justify-content-center p-10'>
           <div className='stepper-nav'>
-            <div className='stepper-item current' data-kt-stepper-element='nav'>
+            <div
+              className={`stepper-item ${props.step == 1 ? "current" : ""}`}
+              data-kt-stepper-element='nav'
+            >
               <div className='stepper-wrapper'>
                 <div className='stepper-icon rounded-3'>
                   <i className='stepper-check fas fa-check'></i>
@@ -33,7 +36,10 @@ export const ProfileAside = () => {
               <div className='stepper-line h-40px'></div>
             </div>
 
-            <div className='stepper-item' data-kt-stepper-element='nav'>
+            <div
+              className={`stepper-item ${props.step == 2 ? "current" : ""}`}
+              data-kt-stepper-element='nav'
+            >
               <div className='stepper-wrapper'>
                 <div className='stepper-icon rounded-3'>
                   <i className='stepper-check fas fa-check'></i>
