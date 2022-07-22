@@ -49,6 +49,7 @@ export const PersonalDataStep = () => {
               placeholder=''
               onChange={(e) => onChange(e)}
               value={name}
+              required
             />
           </div>
 
@@ -91,14 +92,14 @@ export const PersonalDataStep = () => {
             />
           </div>
 
-          <div class='d-flex flex-stack pt-15'>
-            <div class='mr-2'>
+          <div className='d-flex flex-stack pt-15'>
+            <div className='mr-2'>
               <button
                 type='button'
-                class='btn btn-lg btn-light-primary me-3'
+                className='btn btn-lg btn-light-primary me-3'
                 data-kt-stepper-action='previous'
               >
-                <span class='svg-icon svg-icon-4 me-1'>
+                <span className='svg-icon svg-icon-4 me-1'>
                   <svg
                     width='24'
                     height='24'
@@ -127,12 +128,12 @@ export const PersonalDataStep = () => {
             <div>
               <button
                 type='button'
-                class='btn btn-lg btn-primary'
+                className='btn btn-lg btn-primary'
                 data-kt-stepper-action='submit'
               >
-                <span class='indicator-label'>
+                <span className='indicator-label'>
                   Submit
-                  <span class='svg-icon svg-icon-4 ms-2'>
+                  <span className='svg-icon svg-icon-4 ms-2'>
                     <svg
                       width='24'
                       height='24'
@@ -157,18 +158,18 @@ export const PersonalDataStep = () => {
                     </svg>
                   </span>
                 </span>
-                <span class='indicator-progress'>
+                <span className='indicator-progress'>
                   Please wait...
-                  <span class='spinner-border spinner-border-sm align-middle ms-2'></span>
+                  <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
                 </span>
               </button>
               <button
                 type='button'
-                class='btn btn-lg btn-primary'
+                className='btn btn-lg btn-primary'
                 data-kt-stepper-action='next'
               >
                 Continue
-                <span class='svg-icon svg-icon-4 ms-1'>
+                <span className='svg-icon svg-icon-4 ms-1'>
                   <svg
                     width='24'
                     height='24'
