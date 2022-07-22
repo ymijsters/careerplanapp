@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-export const PersonalDataStep = (nextStep) => {
+export const PersonalDataStep = (props) => {
+  const profile = useSelector((state) => state.profile);
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
-    name: "",
-    currentCompany: "",
-    unemployed: false,
-    currentFunction: "",
+    name: profile ? profile.name : "",
+    currentCompany: profile ? profile.currentCompany : "",
+    unemployed: profile ? profile.unemployed : false,
+    currentFunction: profile ? profile.currentFunction : "",
   });
 
   const { name, currentCompany, unemployed, currentFunction } = formData;
@@ -21,9 +25,11 @@ export const PersonalDataStep = (nextStep) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await dispatch(login(email, password));
+      //await dispatch(login(email, password));
       props.nextStep();
-    } catch {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -134,7 +140,11 @@ export const PersonalDataStep = (nextStep) => {
               </button>
             </div>
             <div>
-              <button type='button' className='btn btn-lg btn-primary'>
+              <button
+                type='button'
+                className='btn btn-lg btn-primary'
+                onClick={() => onSubmit()}
+              >
                 Continue
                 <span className='svg-icon svg-icon-4 ms-1'>
                   <svg
