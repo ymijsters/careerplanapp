@@ -12,7 +12,7 @@ export const PersonalDataStep = () => {
 
   const onChange = (e) => {
     if (e.target.type === "checkbox") {
-      setFormDate({ ...formData, [e.target.name]: e.target.checked });
+      setFormData({ ...formData, [e.target.name]: e.target.checked });
     } else {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }

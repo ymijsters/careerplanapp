@@ -32,27 +32,22 @@ router.get("/", auth, async (req, res) => {
 //@access  Private
 router.post(
   "/",
-  [
-    auth,
-    [
-      check("name", "Name is required").not().isEmpty(),
-      check("dateofbirth", "Date of Birth is not a date").isDate(),
-    ],
-  ],
+  [auth, [check("name", "Name is required").not().isEmpty()]],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, city, country, dateofbirth } = req.body;
+    const { name, currentCompany, unemployed, currentFunction } = req.body;
 
     const profileFields = {};
     profileFields.user = req.user.id;
     if (name) profileFields.name = name;
-    if (city) profileFields.city = city;
-    if (country) profileFields.country = country;
-    if (dateofbirth) profileFields.dateofbirth = dateofbirth;
+    if (currentCompany) profileFields.currentCompany = currentCompany;
+    if (unemployed != profileFields.unemployed)
+      profileFields.unemployed = unemployed;
+    if (currentFunction) profileFields.currentFunction = currentFunction;
 
     try {
       let profile = await Profile.findOne({ user: req.user.id });

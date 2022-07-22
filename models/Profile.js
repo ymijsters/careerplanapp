@@ -9,11 +9,15 @@ const ProfileSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  country: {
+  currentCompany: {
     type: String,
   },
-  city: {
+  currentFunction: {
     type: String,
+  },
+  unemployed: {
+    type: Boolean,
+    default: false,
   },
   dateofbirth: {
     type: Date,
