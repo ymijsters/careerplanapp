@@ -23,7 +23,6 @@ export const PersonalDataStep = (props) => {
   };
 
   const onSubmit = async (e) => {
-    e.preventDefault();
     try {
       //await dispatch(login(email, password));
       props.nextStep();

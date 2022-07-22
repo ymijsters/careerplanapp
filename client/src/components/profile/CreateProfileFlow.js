@@ -6,7 +6,7 @@ import { createNextState } from "@reduxjs/toolkit";
 export const CreateProfileFlow = () => {
   const [step, setStep] = useState(1);
 
-  const nextStep = (e) => {
+  const nextStep = () => {
     let newStep = 1;
     if (step == 1) {
       newStep = 2;
