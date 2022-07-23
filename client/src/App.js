@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import "./App.css";
 import "./assets/css/style.bundle.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -7,6 +7,8 @@ import { Register } from "./components/auth/Register";
 import { Login } from "./components/auth/Login";
 import { PrivateRoute } from "./routing/PrivateRoute";
 import setAuthToken from "./utils/setAuthToken";
+import { useDispatch } from "react-redux";
+import { getUser, removeUser } from "./reducers/auth";
 
 //Redux
 import { Provider } from "react-redux";
@@ -14,6 +16,8 @@ import store from "./store";
 import { CreateProfileFlow } from "./components/profile/CreateProfileFlow";
 
 const App = () => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     // check for token in LS when app first runs
     if (localStorage.token) {
@@ -22,11 +26,11 @@ const App = () => {
     }
     // try to fetch a user, if no token or invalid token we
     // will get a 401 response from our API
-    store.dispatch(loadUser());
+    dispatch(getUser());
 
     // log user out from all tabs if they log out in one tab
     window.addEventListener("storage", () => {
-      if (!localStorage.token) store.dispatch({ type: LOGOUT });
+      if (!localStorage.token) dispatch(removeUser());
     });
   }, []);
 

@@ -24,7 +24,7 @@ export const Login = () => {
   };
 
   if (auth.isAuthenticated) {
-    return <Navigate to='/dashboard' />;
+    return <Navigate to='/createprofile' />;
   }
 
   return (
