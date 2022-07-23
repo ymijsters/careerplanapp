@@ -16,23 +16,6 @@ import store from "./store";
 import { CreateProfileFlow } from "./components/profile/CreateProfileFlow";
 
 const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    // check for token in LS when app first runs
-    if (localStorage.token) {
-      // if there is a token set axios headers for all requests
-      setAuthToken(localStorage.token);
-    }
-    // try to fetch a user, if no token or invalid token we
-    // will get a 401 response from our API
-    dispatch(getUser());
-
-    // log user out from all tabs if they log out in one tab
-    window.addEventListener("storage", () => {
-      if (!localStorage.token) dispatch(removeUser());
-    });
-  }, []);
 
   return (
     <Provider store={store}>
