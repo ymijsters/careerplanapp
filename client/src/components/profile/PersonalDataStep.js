@@ -29,7 +29,9 @@ export const PersonalDataStep = (props) => {
       await dispatch(
         createProfile(name, currentCompany, unemployed, currentFunction)
       );
-      props.nextStep();
+      if (profile.profile !== null) {
+        props.nextStep();
+      }
     } catch (err) {
       console.log(err);
     }
