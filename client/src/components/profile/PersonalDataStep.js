@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { createProfile } from "../../reducers/profile";
 
 export const PersonalDataStep = (props) => {
   const profile = useSelector((state) => state.profile);
@@ -24,7 +25,9 @@ export const PersonalDataStep = (props) => {
 
   const onSubmit = async (e) => {
     try {
-      //await dispatch(login(email, password));
+      await dispatch(
+        createProfile(name, currentCompany, unemployed, currentFunction)
+      );
       props.nextStep();
     } catch (err) {
       console.log(err);
