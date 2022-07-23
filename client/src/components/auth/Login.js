@@ -24,6 +24,7 @@ export const Login = () => {
   };
 
   if (auth.isAuthenticated) {
+    console.log(localStorage.getItem("token"));
     return <Navigate to='/createprofile' />;
   }
 
