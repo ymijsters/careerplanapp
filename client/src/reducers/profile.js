@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import api from "../utils/api";
 import { addAlertWithTimout } from "./alert";
 
-
 const initialState = {
   profile: null,
   profiles: [],
@@ -32,6 +31,7 @@ export const createProfile =
       const res = await api.post("/profile", body);
       dispatch(setProfile(res.data));
     } catch (err) {
+      console.log(err.response);
       const errors = err.response.data.errors;
       if (errors) {
         errors.forEach((error) =>

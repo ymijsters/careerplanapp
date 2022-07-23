@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import alertReducer from "../src/reducers/alert";
 import authReducer from "../src/reducers/auth";
-import setAuthToken from './utils/setAuthToken';
+import profileReducer from "../src/reducers/profile";
+import setAuthToken from "./utils/setAuthToken";
 
 const store = configureStore({
   reducer: {
     alert: alertReducer,
     auth: authReducer,
+    profile: profileReducer,
   },
 });
 
