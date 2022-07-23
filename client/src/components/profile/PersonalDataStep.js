@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createProfile } from "../../reducers/profile";
+import { Alert } from "../layout/Alert";
 
 export const PersonalDataStep = (props) => {
   const profile = useSelector((state) => state.profile);
@@ -43,6 +44,7 @@ export const PersonalDataStep = (props) => {
     >
       <div className='current' data-kt-stepper-element='content'>
         <div className='w-100'>
+          <Alert />
           <div className='pb-10 pb-lg-15'>
             <h2 className='fw-bold d-flex align-items-center text-dark'>
               Who are you?

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import api from "../utils/api";
+import { addAlertWithTimout } from "./alert";
 
 const initialState = {
   profile: null,
@@ -18,7 +19,6 @@ const profileSlice = createSlice({
     },
     setProfiles(state, action) {
       state.profiles = action.payload.profiles;
-      state.splice(index, 1);
     },
   },
 });
