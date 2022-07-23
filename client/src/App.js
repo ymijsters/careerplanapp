@@ -25,7 +25,10 @@ const App = () => (
             <Route path='/' element={<Landing />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
-            <Route path='/createprofile' element={<CreateProfileFlow />} />
+            <Route
+              path='/createprofile'
+              element={<PrivateRoute component={CreateProfileFlow} />}
+            />
           </Routes>
         </div>
       </Fragment>

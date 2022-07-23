@@ -3,8 +3,6 @@ import bg from "../../img/auth-bg.png";
 
 export const ProfileAside = (props) => {
   const { step } = props;
-  console.log(step);
-
   return (
     <div className='d-flex flex-column flex-lg-row-auto w-lg-350px w-xl-500px'>
       <div
