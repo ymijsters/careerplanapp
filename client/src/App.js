@@ -7,7 +7,6 @@ import { Register } from "./components/auth/Register";
 import { Login } from "./components/auth/Login";
 import { PrivateRoute } from "./routing/PrivateRoute";
 import setAuthToken from "./utils/setAuthToken";
-import { useDispatch } from "react-redux";
 import { getUser, removeUser } from "./reducers/auth";
 
 //Redux
