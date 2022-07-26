@@ -114,7 +114,7 @@ export const PersonalDataStep = (props) => {
                 className='form-check-input'
                 type='checkbox'
                 name='unemployed'
-                value={unemployed ? 1 : 0}
+                defaultChecked={unemployed}
                 onChange={(e) => onChange(e)}
               />
               <span className='form-check-label fw-semibold text-gray-700 fs-base ms-1'>
