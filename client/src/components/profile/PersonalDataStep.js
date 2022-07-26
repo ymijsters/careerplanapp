@@ -15,12 +15,13 @@ export const PersonalDataStep = (props) => {
 
   const { profile, loading } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
-  console.log(profile);
 
   useEffect(() => {
     try {
+      //Load the current profile if it wasn't loaded yet (only when returning to profilecreation with the same account)
       if (!profile) dispatch(getCurrentProfile());
-
+      console.log(profile);
+      //Update formData with current profile contents
       if (!loading && profile) {
         const profileData = { ...initialState };
         for (const key in profile) {
@@ -31,7 +32,7 @@ export const PersonalDataStep = (props) => {
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [loading, getCurrentProfile, profile]);
 
   const { name, currentCompany, unemployed, currentFunction } = formData;
 

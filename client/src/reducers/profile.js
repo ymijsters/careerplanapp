@@ -5,9 +5,7 @@ import { addAlertWithTimout } from "./alert";
 const initialState = {
   profile: null,
   profiles: [],
-  repos: [],
   loading: true,
-  error: {},
 };
 
 const profileSlice = createSlice({
