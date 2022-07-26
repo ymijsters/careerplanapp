@@ -54,11 +54,6 @@ export const PersonalDataStep = (props) => {
           props.nextStep();
         })
       );
-      console.log(error);
-      //Check if there were no errors, then proceed
-      if (error.length == 0) {
-        props.nextStep();
-      }
     } catch (err) {
       console.log(err);
     }
