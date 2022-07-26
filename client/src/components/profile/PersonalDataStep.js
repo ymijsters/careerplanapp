@@ -103,6 +103,7 @@ export const PersonalDataStep = (props) => {
               className='form-control form-control-lg form-control-solid'
               name='currentCompany'
               placeholder=''
+              disabled={unemployed}
               onChange={(e) => onChange(e)}
               value={currentCompany}
             />
@@ -130,6 +131,7 @@ export const PersonalDataStep = (props) => {
               className='form-control form-control-lg form-control-solid'
               name='currentFunction'
               placeholder=''
+              disabled={unemployed}
               onChange={(e) => onChange(e)}
               value={currentFunction}
             />
