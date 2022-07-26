@@ -37,6 +37,7 @@ export const createProfile =
   (name, currentCompany, unemployed, currentFunction, nextStep) =>
   async (dispatch) => {
     const body = { name, currentCompany, unemployed, currentFunction };
+    console.log(body);
     try {
       const res = await api.post("/profile", body);
       dispatch(setProfile(res.data));

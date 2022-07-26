@@ -68,7 +68,7 @@ export const PersonalDataStep = (props) => {
   return (
     <form
       className='my-auto pb-5'
-      novalidate='novalidate'
+      noValidate='novalidate'
       id='kt_create_account_form'
       data-kt-redirect-url='../../demo11/dist/account/overview.html'
     >
