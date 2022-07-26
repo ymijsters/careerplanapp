@@ -37,18 +37,16 @@ export const PersonalDataStep = (props) => {
 
   const onChange = (e) => {
     e.preventDefault();
-    console.log("onChange");
-    if (e.target.type === "checkbox") {
-      console.log("OnChange for Checkbox");
-      console.log("Old Unemployed State " + unemployed);
-      console.log("New Unemployed State" + !formData[e.target.name]);
-      setFormData({ ...formData, [e.target.name]: !formData[e.target.name] });
-      if (e.target.checked) {
-        console.log("Empty other fields");
-        setFormData({ ...formData, currentCompany: "", currentFunction: "" });
-      }
-    } else {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const onChangeCB = (e) => {
+    console.log("Old Unemployed State " + unemployed);
+    console.log("New Unemployed State" + !formData[e.target.name]);
+    setFormData({ ...formData, [e.target.name]: !formData[e.target.name] });
+    if (e.target.checked) {
+      console.log("Empty other fields");
+      setFormData({ ...formData, currentCompany: "", currentFunction: "" });
     }
   };
 
@@ -122,7 +120,7 @@ export const PersonalDataStep = (props) => {
                 type='checkbox'
                 name='unemployed'
                 defaultChecked={unemployed}
-                onChange={(e) => onChange(e)}
+                onChange={(e) => onChangeCB(e)}
               />
               <span className='form-check-label fw-semibold text-gray-700 fs-base ms-1'>
                 I am currently not employed

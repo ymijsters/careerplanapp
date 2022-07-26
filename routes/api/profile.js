@@ -44,10 +44,10 @@ router.post(
     const profileFields = {};
     profileFields.user = req.user.id;
     if (name) profileFields.name = name;
-    if (currentCompany) profileFields.currentCompany = currentCompany;
+    profileFields.currentCompany = currentCompany;
     if (unemployed != profileFields.unemployed)
       profileFields.unemployed = unemployed;
-    if (currentFunction) profileFields.currentFunction = currentFunction;
+    profileFields.currentFunction = currentFunction;
 
     try {
       let profile = await Profile.findOne({ user: req.user.id });

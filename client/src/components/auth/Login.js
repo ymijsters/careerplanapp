@@ -30,8 +30,8 @@ export const Login = () => {
 
   return (
     <Fragment>
-      <div class='d-flex flex-column flex-lg-row flex-column-fluid'>
-        <div class='d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1'>
+      <div className='d-flex flex-column flex-lg-row flex-column-fluid'>
+        <div className='d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1'>
           <div className='d-flex flex-center flex-column flex-column-fluid'>
             <div className='w-lg-500px p-10'>
               <form
