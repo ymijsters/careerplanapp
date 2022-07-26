@@ -19,7 +19,7 @@ export const PersonalDataStep = (props) => {
     } catch (err) {
       console.log(err);
     }
-  });
+  }, [getCurrentProfile]);
 
   const [formData, setFormData] = useState({
     name: profile ? profile.name : "",
