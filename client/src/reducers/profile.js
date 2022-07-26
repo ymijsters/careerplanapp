@@ -28,7 +28,7 @@ export const createProfile =
   (name, currentCompany, unemployed, currentFunction) => async (dispatch) => {
     const body = { name, currentCompany, unemployed, currentFunction };
     try {
-      const res = await api.post("/profile");
+      const res = await api.post("/profile", body);
       dispatch(setProfile(res.data));
     } catch (err) {
       console.log(err.response);
@@ -43,7 +43,7 @@ export const createProfile =
 
 export const getCurrentProfile = () => async (dispatch) => {
   try {
-    const res = await api.get("/profile", body);
+    const res = await api.get("/profile");
     dispatch(setProfile(res.data));
   } catch (err) {
     console.log(err.response);
