@@ -13,7 +13,7 @@ const initialState = {
 export const PersonalDataStep = (props) => {
   const [formData, setFormData] = useState(initialState);
 
-  const { profile, loading } = useSelector((state) => state.profile);
+  const { profile, loading, error } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export const PersonalDataStep = (props) => {
       await dispatch(
         createProfile(name, currentCompany, unemployed, currentFunction)
       );
-      if (profile !== null) {
+      if (!error) {
         props.nextStep();
       }
     } catch (err) {

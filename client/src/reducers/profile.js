@@ -6,6 +6,7 @@ const initialState = {
   profile: null,
   profiles: [],
   loading: true,
+  error: {},
 };
 
 const profileSlice = createSlice({
@@ -22,6 +23,9 @@ const profileSlice = createSlice({
     setLoading(state, action) {
       state.loading = true;
     },
+    setError(state, action) {
+      state.error = action.payload;
+    },
   },
 });
 
@@ -37,7 +41,10 @@ export const createProfile =
       const errors = err.response.data.errors;
       if (errors) {
         errors.forEach((error) =>
-          dispatch(addAlertWithTimout({ msg: error.msg, alertType: "danger" }))
+          dispatch(
+            addAlertWithTimout({ msg: error.msg, alertType: "danger" }),
+            setError({ msg: error.msg })
+          )
         );
       }
     }
@@ -53,5 +60,6 @@ export const getCurrentProfile = () => async (dispatch) => {
   }
 };
 
-export const { setProfile, setProfiles, setLoading } = profileSlice.actions;
+export const { setProfile, setProfiles, setLoading, setError } =
+  profileSlice.actions;
 export default profileSlice.reducer;
