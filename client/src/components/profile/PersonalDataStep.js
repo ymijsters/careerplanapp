@@ -5,30 +5,18 @@ import { Alert } from "../layout/Alert";
 
 export const PersonalDataStep = (props) => {
   const profile = useSelector((state) => state.profile);
+  console.log(profile);
   const dispatch = useDispatch();
 
   useEffect(() => {
     try {
-      let profile = dispatch(getCurrentProfile());
-      setFormData({
-        name: profile.name,
-        currentCompany: profile.currentCompany,
-        unemployed: profile.unemployed,
-        currentFunction: profile.currentFunction,
-      });
+      dispatch(getCurrentProfile());
     } catch (err) {
       console.log(err);
     }
   }, [getCurrentProfile]);
 
-  const [formData, setFormData] = useState({
-    name: profile ? profile.name : "",
-    currentCompany: profile ? profile.currentCompany : "",
-    unemployed: profile ? profile.unemployed : false,
-    currentFunction: profile ? profile.currentFunction : "",
-  });
-
-  const { name, currentCompany, unemployed, currentFunction } = formData;
+  const { name, currentCompany, unemployed, currentFunction } = profile;
 
   const onChange = (e) => {
     if (e.target.type === "checkbox") {
@@ -43,7 +31,7 @@ export const PersonalDataStep = (props) => {
       await dispatch(
         createProfile(name, currentCompany, unemployed, currentFunction)
       );
-      if (profile.profile !== null) {
+      if (profile !== null) {
         props.nextStep();
       }
     } catch (err) {
