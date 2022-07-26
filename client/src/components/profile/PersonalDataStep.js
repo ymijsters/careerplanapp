@@ -3,20 +3,37 @@ import { useDispatch, useSelector } from "react-redux";
 import { createProfile, getCurrentProfile } from "../../reducers/profile";
 import { Alert } from "../layout/Alert";
 
+const initialState = {
+  name: "",
+  currentCompany: "",
+  unemployed: false,
+  currentFunction: "",
+};
+
 export const PersonalDataStep = (props) => {
-  const profile = useSelector((state) => state.profile);
-  console.log(profile);
+  const [formData, setFormData] = useState(initialState);
+
+  const { profile, loading } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
+  console.log(profile);
 
   useEffect(() => {
     try {
-      dispatch(getCurrentProfile());
+      if (!profile) dispatch(getCurrentProfile());
+
+      if (!loading && profile) {
+        const profileData = { ...initialState };
+        for (const key in profile) {
+          if (key in profileData) profileData[key] = profile[key];
+        }
+        setFormData(profileData);
+      }
     } catch (err) {
       console.log(err);
     }
-  }, [getCurrentProfile]);
+  }, []);
 
-  const { name, currentCompany, unemployed, currentFunction } = profile;
+  const { name, currentCompany, unemployed, currentFunction } = formData;
 
   const onChange = (e) => {
     if (e.target.type === "checkbox") {

@@ -15,10 +15,14 @@ const profileSlice = createSlice({
   initialState: initialState,
   reducers: {
     setProfile(state, action) {
+      state.loading = false;
       state.profile = action.payload;
     },
     setProfiles(state, action) {
       state.profiles = action.payload.profiles;
+    },
+    setLoading(state, action) {
+      state.loading = true;
     },
   },
 });
@@ -43,6 +47,7 @@ export const createProfile =
 
 export const getCurrentProfile = () => async (dispatch) => {
   try {
+    dispatch(setLoading());
     const res = await api.get("/profile");
     dispatch(setProfile(res.data));
   } catch (err) {
@@ -50,5 +55,5 @@ export const getCurrentProfile = () => async (dispatch) => {
   }
 };
 
-export const { setProfile, setProfiles } = profileSlice.actions;
+export const { setProfile, setProfiles, setLoading } = profileSlice.actions;
 export default profileSlice.reducer;
