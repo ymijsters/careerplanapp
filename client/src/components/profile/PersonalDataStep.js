@@ -40,11 +40,10 @@ export const PersonalDataStep = (props) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onChangeCB = (e) => {
-    console.log("Old Unemployed State " + unemployed);
-    console.log("Opposite of current State" + !formData[e.target.name]);
-    console.log("Target.checked: " + e.target.checked);
-    setFormData({ ...formData, [e.target.name]: !formData[e.target.name] });
+  const onChangeCB = (e, newValue) => {
+    console.log("Old State " + e.target.name + " " + unemployed);
+    console.log("Opposite of current State: " + newValue);
+    setFormData({ ...formData, [e.target.name]: newValue });
     if (e.target.checked) {
       console.log("Empty other fields");
       setFormData({ ...formData, currentCompany: "", currentFunction: "" });
@@ -121,7 +120,7 @@ export const PersonalDataStep = (props) => {
                 type='checkbox'
                 name='unemployed'
                 checked={unemployed}
-                onChange={(e) => onChangeCB(e)}
+                onChange={(e) => onChangeCB(e, !unemployed)}
               />
               <span className='form-check-label fw-semibold text-gray-700 fs-base ms-1'>
                 I am currently not employed
