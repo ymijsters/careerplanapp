@@ -42,7 +42,8 @@ export const PersonalDataStep = (props) => {
 
   const onChangeCB = (e) => {
     console.log("Old Unemployed State " + unemployed);
-    console.log("New Unemployed State" + !formData[e.target.name]);
+    console.log("Opposite of current State" + !formData[e.target.name]);
+    console.log("Target.checked: " + e.target.checked);
     setFormData({ ...formData, [e.target.name]: !formData[e.target.name] });
     if (e.target.checked) {
       console.log("Empty other fields");
@@ -119,7 +120,7 @@ export const PersonalDataStep = (props) => {
                 className='form-check-input'
                 type='checkbox'
                 name='unemployed'
-                defaultChecked={unemployed}
+                checked={unemployed}
                 onChange={(e) => onChangeCB(e)}
               />
               <span className='form-check-label fw-semibold text-gray-700 fs-base ms-1'>
