@@ -16,12 +16,15 @@ const profileSlice = createSlice({
     setProfile(state, action) {
       state.loading = false;
       state.profile = action.payload;
+      state.error = [];
     },
     setProfiles(state, action) {
       state.profiles = action.payload.profiles;
+      state.error = [];
     },
     setLoading(state, action) {
       state.loading = true;
+      state.error = [];
     },
     setError(state, action) {
       state.error = action.payload;
@@ -40,7 +43,7 @@ export const createProfile =
       console.log(err.response);
       const errors = err.response.data.errors;
       if (errors) {
-        setError(error);
+        dispatch(setError(errors));
         errors.forEach((error) =>
           dispatch(addAlertWithTimout({ msg: error.msg, alertType: "danger" }))
         );
