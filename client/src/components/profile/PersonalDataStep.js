@@ -37,10 +37,14 @@ export const PersonalDataStep = (props) => {
 
   const onChange = (e) => {
     e.preventDefault();
-
+    console.log("onChange");
     if (e.target.type === "checkbox") {
+      console.log("OnChange for Checkbox");
+      console.log("Old Unemployed State " + unemployed);
+      console.log("New Unemployed State" + !formData[e.target.name]);
       setFormData({ ...formData, [e.target.name]: !formData[e.target.name] });
       if (e.target.checked) {
+        console.log("Empty other fields");
         setFormData({ ...formData, currentCompany: "", currentFunction: "" });
       }
     } else {
