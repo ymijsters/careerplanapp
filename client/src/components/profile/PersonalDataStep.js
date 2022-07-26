@@ -43,7 +43,7 @@ export const PersonalDataStep = (props) => {
   const onChangeCB = (e, newValue) => {
     console.log("Old State " + e.target.name + " " + unemployed);
     console.log("Opposite of current State: " + newValue);
-    setFormData({ ...formData, [e.target.name]: newValue });
+    setFormData({ ...formData, [e.target.name]: e.target.checked });
     if (e.target.checked) {
       console.log("Empty other fields");
       setFormData({ ...formData, currentCompany: "", currentFunction: "" });
