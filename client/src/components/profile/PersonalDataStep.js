@@ -37,6 +37,8 @@ export const PersonalDataStep = (props) => {
   const { name, currentCompany, unemployed, currentFunction } = formData;
 
   const onChange = (e) => {
+    e.preventDefault();
+
     if (e.target.type === "checkbox") {
       setFormData({ ...formData, [e.target.name]: e.target.checked });
     } else {
@@ -46,9 +48,13 @@ export const PersonalDataStep = (props) => {
 
   const onSubmit = async (e) => {
     try {
+      e.preventDefault();
+
       //Dispatch profile to API submission
       await dispatch(
-        createProfile(name, currentCompany, unemployed, currentFunction)
+        createProfile(name, currentCompany, unemployed, currentFunction, () => {
+          props.nextStep();
+        })
       );
       console.log(error);
       //Check if there were no errors, then proceed

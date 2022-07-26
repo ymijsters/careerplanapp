@@ -34,11 +34,13 @@ const profileSlice = createSlice({
 
 //Potentially move these functions to another file
 export const createProfile =
-  (name, currentCompany, unemployed, currentFunction) => async (dispatch) => {
+  (name, currentCompany, unemployed, currentFunction, nextStep) =>
+  async (dispatch) => {
     const body = { name, currentCompany, unemployed, currentFunction };
     try {
       const res = await api.post("/profile", body);
       dispatch(setProfile(res.data));
+      nextStep();
     } catch (err) {
       console.log(err.response);
       const errors = err.response.data.errors;
