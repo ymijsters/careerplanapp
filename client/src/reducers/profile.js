@@ -28,7 +28,7 @@ export const createProfile =
   (name, currentCompany, unemployed, currentFunction) => async (dispatch) => {
     const body = { name, currentCompany, unemployed, currentFunction };
     try {
-      const res = await api.post("/profile", body);
+      const res = await api.post("/profile");
       dispatch(setProfile(res.data));
     } catch (err) {
       console.log(err.response);
@@ -47,12 +47,6 @@ export const getCurrentProfile = () => async (dispatch) => {
     dispatch(setProfile(res.data));
   } catch (err) {
     console.log(err.response);
-    const errors = err.response.data.errors;
-    if (errors) {
-      errors.forEach((error) =>
-        dispatch(addAlertWithTimout({ msg: error.msg, alertType: "danger" }))
-      );
-    }
   }
 };
 
