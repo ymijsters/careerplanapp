@@ -49,7 +49,7 @@ export const PersonalDataStep = (props) => {
       await dispatch(
         createProfile(name, currentCompany, unemployed, currentFunction)
       );
-      if (!error) {
+      if (error.length == 0) {
         props.nextStep();
       }
     } catch (err) {

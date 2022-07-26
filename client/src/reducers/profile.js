@@ -6,7 +6,7 @@ const initialState = {
   profile: null,
   profiles: [],
   loading: true,
-  error: {},
+  error: [],
 };
 
 const profileSlice = createSlice({
@@ -40,11 +40,9 @@ export const createProfile =
       console.log(err.response);
       const errors = err.response.data.errors;
       if (errors) {
+        setError(error);
         errors.forEach((error) =>
-          dispatch(
-            addAlertWithTimout({ msg: error.msg, alertType: "danger" }),
-            setError({ msg: error.msg })
-          )
+          dispatch(addAlertWithTimout({ msg: error.msg, alertType: "danger" }))
         );
       }
     }
