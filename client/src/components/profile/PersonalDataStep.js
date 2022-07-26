@@ -39,7 +39,7 @@ export const PersonalDataStep = (props) => {
     e.preventDefault();
 
     if (e.target.type === "checkbox") {
-      setFormData({ ...formData, [e.target.name]: e.target.checked });
+      setFormData({ ...formData, [e.target.name]: !formData[e.target.name] });
       if (e.target.checked) {
         setFormData({ ...FormData, currentCompany: "", currentFunction: "" });
       }
