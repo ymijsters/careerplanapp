@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createProfile } from "../../reducers/profile";
+import { createProfile, getCurrentProfile } from "../../reducers/profile";
 import { Alert } from "../layout/Alert";
 
 export const PersonalDataStep = (props) => {
   const profile = useSelector((state) => state.profile);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    try {
+      let profile = dispatch(getCurrentProfile());
+      setFormData({
+        name: profile.name,
+        currentCompany: profile.currentCompany,
+        unemployed: profile.unemployed,
+        currentFunction: profile.currentFunction,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  });
 
   const [formData, setFormData] = useState({
     name: profile ? profile.name : "",
