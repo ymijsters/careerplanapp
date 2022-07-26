@@ -37,16 +37,7 @@ export const PersonalDataStep = (props) => {
 
   const onChange = (e) => {
     e.preventDefault();
-    if (e.target.type === "checkbox") {
-      setFormData({
-        ...formData,
-        currentCompany: e.target.checked ? "" : formData.currentCompany,
-        currentFunction: e.target.checked ? "" : formData.currentFunction,
-        unemployed: e.target.checked,
-      });
-    } else {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const onChangeCB = (e, newValue) => {
@@ -128,7 +119,18 @@ export const PersonalDataStep = (props) => {
                 name='unemployed'
                 checked={unemployed}
                 value={unemployed}
-                onChange={(e) => onChange(e)}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    currentCompany: e.target.checked
+                      ? ""
+                      : formData.currentCompany,
+                    currentFunction: e.target.checked
+                      ? ""
+                      : formData.currentFunction,
+                    unemployed: e.target.checked,
+                  })
+                }
               />
               <span className='form-check-label fw-semibold text-gray-700 fs-base ms-1'>
                 I am currently not employed
