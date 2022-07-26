@@ -46,9 +46,12 @@ export const PersonalDataStep = (props) => {
 
   const onSubmit = async (e) => {
     try {
+      //Dispatch profile to API submission
       await dispatch(
         createProfile(name, currentCompany, unemployed, currentFunction)
       );
+      console.log(error);
+      //Check if there were no errors, then proceed
       if (error.length == 0) {
         props.nextStep();
       }
