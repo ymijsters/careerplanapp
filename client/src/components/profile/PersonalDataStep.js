@@ -48,8 +48,6 @@ export const PersonalDataStep = (props) => {
 
   const onSubmit = async (e) => {
     try {
-      e.preventDefault();
-
       //Dispatch profile to API submission
       await dispatch(
         createProfile(name, currentCompany, unemployed, currentFunction, () => {
