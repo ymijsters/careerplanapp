@@ -20,7 +20,6 @@ export const PersonalDataStep = (props) => {
     try {
       //Load the current profile if it wasn't loaded yet (only when returning to profilecreation with the same account)
       if (!profile) dispatch(getCurrentProfile());
-      console.log(profile);
       //Update formData with current profile contents
       if (!loading && profile) {
         const profileData = { ...initialState };
@@ -41,6 +40,9 @@ export const PersonalDataStep = (props) => {
 
     if (e.target.type === "checkbox") {
       setFormData({ ...formData, [e.target.name]: e.target.checked });
+      if (e.target.checked) {
+        setFormData({ ...FormData, currentCompany: "", currentFunction: "" });
+      }
     } else {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
