@@ -16,6 +16,7 @@ export const CreateProfileFlow = () => {
     } else {
       step--;
     }
+    console.log("New step: " + step);
     setStep(newStep);
   };
 
