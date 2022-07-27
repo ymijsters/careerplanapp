@@ -12,11 +12,11 @@ export const CreateProfileFlow = () => {
     console.log("In Next Step with Next: " + next);
     let newStep = step;
     if (next) {
-      step++;
+      newStep++;
     } else {
-      step--;
+      newStep--;
     }
-    console.log("New step: " + step);
+    console.log("New step: " + newStep);
     setStep(newStep);
   };
 
