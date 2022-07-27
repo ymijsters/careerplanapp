@@ -14,6 +14,16 @@ const Goalschema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  duedate: {
+    type: Date,
+  },
+  color: {
+    type: String,
+  },
+  stockgoal: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "stockgoal",
+  },
 });
 
 module.exports = Goal = mongoose.model("goal", GoalSchema);
