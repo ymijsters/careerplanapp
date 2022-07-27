@@ -9,6 +9,7 @@ export const CreateProfileFlow = () => {
   const [step, setStep] = useState(1);
 
   const nextStep = (next) => {
+    console.log("In Next Step with Next: " + next);
     let newStep = step;
     if (next) {
       step++;

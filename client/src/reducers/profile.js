@@ -40,6 +40,7 @@ export const createProfile =
     try {
       const res = await api.post("/profile", body);
       dispatch(setProfile(res.data));
+      console.log("Get to Next Step in CreateProfile");
       nextStep();
     } catch (err) {
       console.log(err.response);
