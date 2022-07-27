@@ -46,7 +46,7 @@ export const AmbitionStep = (props) => {
       //Dispatch profile to API submission
       await dispatch(
         submitAmbition(ambitionStatement, () => {
-          props.nextStep();
+          props.nextStep(true);
         })
       );
     } catch (err) {
@@ -95,13 +95,14 @@ export const AmbitionStep = (props) => {
           </div>
 
           <div className='d-flex flex-stack pt-15'>
-            <div class='mr-2'>
+            <div className='mr-2'>
               <button
                 type='button'
-                class='btn btn-lg btn-light-primary me-3'
+                className='btn btn-lg btn-light-primary me-3'
                 data-kt-stepper-action='previous'
+                onClick={() => props.nextStep(false)}
               >
-                <span class='svg-icon svg-icon-4 me-1'>
+                <span className='svg-icon svg-icon-4 me-1'>
                   <svg
                     width='24'
                     height='24'

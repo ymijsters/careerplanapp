@@ -8,10 +8,12 @@ import { AmbitionStep } from "./AmbitionStep";
 export const CreateProfileFlow = () => {
   const [step, setStep] = useState(1);
 
-  const nextStep = () => {
-    let newStep = 1;
-    if (step == 1) {
-      newStep = 2;
+  const nextStep = (next) => {
+    let newStep = step;
+    if (next) {
+      step++;
+    } else {
+      step--;
     }
     setStep(newStep);
   };
@@ -37,7 +39,7 @@ export const CreateProfileFlow = () => {
                   return <p>Default Return here</p>;
               }
             })()}
-            <p onClick={() => nextStep()}>Click for next step</p>
+            <p onClick={(next) => nextStep(next)}>Click for next step</p>
           </div>
         </div>
       </div>
