@@ -99,7 +99,6 @@ export const AmbitionStep = (props) => {
               <button
                 type='button'
                 className='btn btn-lg btn-light-primary me-3'
-                data-kt-stepper-action='previous'
                 onClick={() => props.nextStep(false)}
               >
                 <span className='svg-icon svg-icon-4 me-1'>
