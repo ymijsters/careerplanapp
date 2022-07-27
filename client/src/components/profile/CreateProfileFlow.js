@@ -30,16 +30,17 @@ export const CreateProfileFlow = () => {
             {(() => {
               switch (step) {
                 case 1:
-                  return <PersonalDataStep nextStep={() => nextStep()} />;
+                  return (
+                    <PersonalDataStep nextStep={(next) => nextStep(next)} />
+                  );
                 case 2:
-                  return <AmbitionStep nextStep={() => nextStep()} />;
+                  return <AmbitionStep nextStep={(next) => nextStep(next)} />;
                 case 3:
-                  return <CreateGoalStep nextStep={() => nextStep()} />;
+                  return <CreateGoalStep nextStep={(next) => nextStep(next)} />;
                 default:
                   return <p>Default Return here</p>;
               }
             })()}
-            <p onClick={(next) => nextStep(next)}>Click for next step</p>
           </div>
         </div>
       </div>
