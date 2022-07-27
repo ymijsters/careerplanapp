@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Goalschema = new mongoose.Schema({
+const GoalSchema = new mongoose.Schema({
   profile: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "profile",
