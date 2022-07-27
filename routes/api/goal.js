@@ -42,10 +42,18 @@ router.post(
   [
     auth,
     [
-      check("goals", "No goals submitted or a goal misses its name")
-        .isArray()
-        .notEmpty()
-        .existsInArray("name"),
+      check("goals", "No goals submitted or a goal misses its name").custom(
+        (value) => {
+          if (!Array.isArray(value)) return false;
+          if (value.length == 0) return false;
+          value.forEach((element) => {
+            if (!"name" in element) {
+              return false;
+            }
+          });
+          return true;
+        }
+      ),
     ],
   ],
   async (req, res) => {

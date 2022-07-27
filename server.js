@@ -1,7 +1,6 @@
 const express = require("express");
 const connectDB = require("./config/db");
 const path = require("path");
-const expressValidator = require("express-validator")
 const app = express();
 
 //Connect DB
@@ -9,28 +8,6 @@ connectDB();
 
 //Init middleware
 app.use(express.json({ extended: false }));
-
-//Add Validators
-app.use(
-  expressValidator({
-    customValidators: {
-      isArray: function (value) {
-        return Array.isArray(value);
-      },
-      notEmpty: function (array) {
-        return array.length > 0;
-      },
-      existsInArray: function (array, key) {
-        array.forEach((element) => {
-          if (!key in element) {
-            return false;
-          }
-        });
-        return true;
-      },
-    },
-  })
-);
 
 // Define routes
 app.use("/api/user", require("./routes/api/user"));
