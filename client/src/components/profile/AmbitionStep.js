@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createProfile, getCurrentProfile } from "../../reducers/profile";
+import { Alert } from "../layout/Alert";
 
 export const AmbitionStep = () => {
   const [formData, setFormData] = useState(initialState);
@@ -25,6 +28,24 @@ export const AmbitionStep = () => {
 
   const { ambitionStatement } = formData;
 
+  const onChange = (e) => {
+    e.preventDefault();
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = async () => {
+    try {
+      //Dispatch profile to API submission
+      await dispatch(
+        createProfile(name, currentCompany, unemployed, currentFunction, () => {
+          props.nextStep();
+        })
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <form
       className='my-auto pb-5'
@@ -37,21 +58,23 @@ export const AmbitionStep = () => {
           <Alert />
           <div className='pb-10 pb-lg-15'>
             <h2 className='fw-bold d-flex align-items-center text-dark'>
-              Who are you?
+              Your personal ambition statement
             </h2>
             <div className='text-muted fw-semibold fs-6'>
-              Before you dive in, please tell us a little about yourself. Review
-              our&nbsp;
-              <a href='#' className='link-primary fw-bold'>
-                Privacy Statement
-              </a>
-              &nbsp;to see how we keep your data save.
+              Write your personal ambition statement. This exercise helps you
+              set a dot on the horizon of what your perfect career looks like
+              and gives you an aim for short-term goals. When writing your
+              statement, do not consider limitations, but instead focus solely
+              on your ideal career.
             </div>
           </div>
 
           <div className='mb-10 fv-row'>
-            <label className='form-label mb-3'>Your Name</label>
-            <input
+            <label className='form-label mb-3'>
+              Describe your desired career in 3-5 years without considering any
+              limitations or blockers.
+            </label>
+            <textarea
               type='text'
               className='form-control form-control-lg form-control-solid'
               name='ambitionStatement'
@@ -59,6 +82,7 @@ export const AmbitionStep = () => {
               onChange={(e) => onChange(e)}
               value={ambitionStatement}
               required
+              style={{ height: "200px" }}
             />
           </div>
 
