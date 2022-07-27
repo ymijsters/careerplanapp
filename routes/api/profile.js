@@ -56,7 +56,7 @@ router.post(
       profileFields.unemployed = unemployed;
     if (currentFunction || unemployed)
       profileFields.currentFunction = currentFunction;
-    if (ambitionStatement) profileFields.ambitionStatement = ambitionStatement; 
+    if (ambitionStatement) profileFields.ambitionStatement = ambitionStatement;
 
     try {
       let profile = await Profile.findOne({ user: req.user.id });
@@ -82,6 +82,44 @@ router.post(
     }
   }
 );
+
+//@route   POST api/profile/ambition
+//@desc    Create or update user profile
+//@access  Private
+router.post("/ambition", [auth], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  const { ambitionStatement } = req.body;
+
+  const profileFields = {};
+  profileFields.user = req.user.id;
+  if (ambitionStatement) profileFields.ambitionStatement = ambitionStatement;
+
+  try {
+    let profile = await Profile.findOne({ user: req.user.id });
+
+    if (profile) {
+      //update profile
+      profile = await Profile.findOneAndUpdate(
+        { user: req.user.id },
+        { $set: profileFields },
+        { new: true }
+      );
+
+      return res.json(profile);
+    } else {
+      return res
+        .status(400)
+        .json({ errors: [{ msg: "First create a profile for this user" }] });
+    }
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send("Server Error: " + err.message);
+  }
+});
 
 //@route   DELETE api/profile
 //@desc    Delete profile and user

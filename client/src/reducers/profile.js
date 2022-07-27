@@ -38,7 +38,7 @@ export const createProfile =
   async (dispatch) => {
     const body = { name, currentCompany, unemployed, currentFunction };
     try {
-      const res = await api.post("/profile", body);
+      const res = await api.post("/profile/ambition", body);
       dispatch(setProfile(res.data));
       nextStep();
     } catch (err) {
