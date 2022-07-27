@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ProfileAside } from "./ProfileAside";
 import { PersonalDataStep } from "./PersonalDataStep";
 import { createNextState } from "@reduxjs/toolkit";
+import { CreateGoalStep } from "./CreateGoalStep";
 
 export const CreateProfileFlow = () => {
   const [step, setStep] = useState(1);
@@ -27,6 +28,8 @@ export const CreateProfileFlow = () => {
               switch (step) {
                 case 1:
                   return <PersonalDataStep nextStep={() => nextStep()} />;
+                case 2:
+                  return <CreateGoalStep nextStep={() => nextStep()} />;
                 default:
                   return <p>Default Return here</p>;
               }

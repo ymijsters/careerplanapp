@@ -40,15 +40,7 @@ export const PersonalDataStep = (props) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onChangeCB = (e, newValue) => {
-    setFormData({ ...formData, [e.target.name]: newValue });
-    if (newValue) {
-      console.log("Empty other fields");
-      setFormData({ ...formData, currentCompany: "", currentFunction: "" });
-    }
-  };
-
-  const onSubmit = async (e) => {
+  const onSubmit = async () => {
     try {
       //Dispatch profile to API submission
       await dispatch(

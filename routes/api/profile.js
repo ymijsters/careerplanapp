@@ -39,15 +39,24 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, currentCompany, unemployed, currentFunction } = req.body;
+    const {
+      name,
+      currentCompany,
+      unemployed,
+      currentFunction,
+      ambitionStatement,
+    } = req.body;
 
     const profileFields = {};
     profileFields.user = req.user.id;
     if (name) profileFields.name = name;
-    profileFields.currentCompany = currentCompany;
+    if (currentCompany || unemployed)
+      profileFields.currentCompany = currentCompany;
     if (unemployed != profileFields.unemployed)
       profileFields.unemployed = unemployed;
-    profileFields.currentFunction = currentFunction;
+    if (currentFunction || unemployed)
+      profileFields.currentFunction = currentFunction;
+    if (ambitionStatement) profileFields.ambitionStatement = ambitionStatement; 
 
     try {
       let profile = await Profile.findOne({ user: req.user.id });

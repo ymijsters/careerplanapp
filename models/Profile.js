@@ -24,6 +24,9 @@ const ProfileSchema = new mongoose.Schema({
   dateofbirth: {
     type: Date,
   },
+  ambitionStatement: {
+    type: String,
+  },
 });
 
 module.exports = Profile = mongoose.model("profile", ProfileSchema);
