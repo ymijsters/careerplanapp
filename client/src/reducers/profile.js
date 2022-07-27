@@ -37,7 +37,25 @@ export const createProfile =
   (name, currentCompany, unemployed, currentFunction, nextStep) =>
   async (dispatch) => {
     const body = { name, currentCompany, unemployed, currentFunction };
-    console.log(body);
+    try {
+      const res = await api.post("/profile", body);
+      dispatch(setProfile(res.data));
+      nextStep();
+    } catch (err) {
+      console.log(err.response);
+      const errors = err.response.data.errors;
+      if (errors) {
+        dispatch(setError(errors));
+        errors.forEach((error) =>
+          dispatch(addAlertWithTimout({ msg: error.msg, alertType: "danger" }))
+        );
+      }
+    }
+  };
+
+export const submitAmbition =
+  (ambitionStatement, nextStep) => async (dispatch) => {
+    const body = { ambitionStatement };
     try {
       const res = await api.post("/profile", body);
       dispatch(setProfile(res.data));

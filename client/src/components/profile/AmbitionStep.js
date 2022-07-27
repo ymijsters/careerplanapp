@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createProfile, getCurrentProfile } from "../../reducers/profile";
+import {
+  createProfile,
+  getCurrentProfile,
+  submitAmbition,
+} from "../../reducers/profile";
 import { Alert } from "../layout/Alert";
 
-export const AmbitionStep = () => {
+const initialState = {
+  ambitionStatement: "",
+};
+
+export const AmbitionStep = (props) => {
   const [formData, setFormData] = useState(initialState);
 
   const { profile, loading } = useSelector((state) => state.profile);
@@ -37,7 +45,7 @@ export const AmbitionStep = () => {
     try {
       //Dispatch profile to API submission
       await dispatch(
-        createProfile(name, currentCompany, unemployed, currentFunction, () => {
+        submitAmbition(ambitionStatement, () => {
           props.nextStep();
         })
       );
