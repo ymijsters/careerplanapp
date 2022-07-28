@@ -5,6 +5,7 @@ const { check, validationResult } = require("express-validator/check");
 
 const Profile = require("../../models/Profile");
 const Goal = require("../../models/Goal");
+const StockGoal = require("../../models/StockGoal");
 
 // @Route  GET api/goal
 // @Desc   Get goals from profile
@@ -63,45 +64,55 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    return res.status(200).json({ success: "Goals successfully received" });
-
-    const {
-      name,
-      currentCompany,
-      unemployed,
-      currentFunction,
-      ambitionStatement,
-    } = req.body;
-
-    const profileFields = {};
-    profileFields.user = req.user.id;
-    if (name) profileFields.name = name;
-    if (currentCompany || unemployed)
-      profileFields.currentCompany = currentCompany;
-    if (unemployed != profileFields.unemployed)
-      profileFields.unemployed = unemployed;
-    if (currentFunction || unemployed)
-      profileFields.currentFunction = currentFunction;
-    if (ambitionStatement) profileFields.ambitionStatement = ambitionStatement;
+    const { goals } = req.body;
 
     try {
+      let goalResult = [];
+
       let profile = await Profile.findOne({ user: req.user.id });
 
-      if (profile) {
-        //update profile
-        profile = await Profile.findOneAndUpdate(
-          { user: req.user.id },
-          { $set: profileFields },
-          { new: true }
-        );
-
-        return res.json(profile);
+      if (!profile) {
+        return res.status(400).json({
+          msg: "There is no profile for this user. First create a profile before making goals.",
+        });
       }
-      //New Profile
-      profile = new Profile(profileFields);
-      await profile.save();
 
-      res.json(profile);
+      for await (const goal of goals) {
+        const { name, description, duedate, color, stockgoalId } = goal;
+
+        const goalFields = {};
+        goalFields.profile = profile.id;
+        if (name) goalFields.name = name;
+        if (description) goalFields.description = description;
+        if (duedate) goalFields.duedate = duedate;
+        if (color) goalFields.color = color;
+        if (stockgoalId) {
+          let stockgoal = await StockGoal.findById(stockgoalId);
+          if (!stockgoal) {
+            return res.status(400).json({
+              msg: "An incorrect standard goal was submitted.",
+            });
+          }
+          goalFields.stockgoal = stockgoalId;
+        }
+
+        const existingGoals = await Goal.find({
+          name: goalFields.name,
+          profile: goalFields.profile,
+        });
+
+        if (existingGoals) {
+          return res.status(400).json({
+            msg: "There cannot be multiple goals with the same name for one user.",
+          });
+        }
+
+        let newGoal = new Goal(goalFields);
+        await newGoal.save();
+        goalResult.push(newGoal);
+      }
+
+      res.json(goalResult);
     } catch (err) {
       console.log(err.message);
       res.status(500).send("Server Error: " + err.message);
