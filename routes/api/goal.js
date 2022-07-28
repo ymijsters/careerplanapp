@@ -50,6 +50,8 @@ router.post(
           value.forEach((element) => {
             if (!("name" in element)) {
               return false;
+            } else {
+              return false;
             }
           });
           return true;
