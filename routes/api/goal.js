@@ -46,8 +46,9 @@ router.post(
         (value) => {
           if (!Array.isArray(value)) return false;
           if (value.length == 0) return false;
+          //Not working yet!
           value.forEach((element) => {
-            if (!"name" in element) {
+            if (!("name" in element)) {
               return false;
             }
           });
