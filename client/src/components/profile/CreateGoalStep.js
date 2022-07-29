@@ -89,7 +89,7 @@ export const CreateGoalStep = () => {
               &nbsp;to see how we keep your data save.
             </div>
           </div>
-          {allStockGoals.forEach((stockGoal) => {
+          {allStockGoals.map((stockGoal) => {
             return (
               <label className='d-flex flex-stack mb-5 cursor-pointer'>
                 <span className='d-flex align-items-center me-2'>
