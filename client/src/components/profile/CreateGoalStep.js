@@ -25,8 +25,10 @@ export const CreateGoalStep = () => {
         const goalData = { ...formData };
         //Add retreived goals to FormData
         for (const goal in goals) {
+          console.log(goal);
           //Differentiate between stockgoals that have been selected and normal goals
           if (goal.stockgoal) {
+            //Check if the goal is already in FormData (then don't add)
             if (
               goalData.selectedStockGoals.filter((stockGoal) => {
                 return goal.id === stockGoal.id;
@@ -34,7 +36,9 @@ export const CreateGoalStep = () => {
             ) {
               goalData.selectedStockGoals.push(goal);
             }
-          } else {
+          }
+          //Now check the same for custom goals
+          else {
             console.log("This is a custom goal");
             //Check if the goal is already in FormData (then don't add)
             if (
