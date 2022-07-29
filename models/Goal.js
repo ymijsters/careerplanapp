@@ -23,6 +23,10 @@ const GoalSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "stockgoal",
   },
+  creationData: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = Goal = mongoose.model("goal", GoalSchema);
