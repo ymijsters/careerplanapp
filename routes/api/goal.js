@@ -7,6 +7,26 @@ const Profile = require("../../models/Profile");
 const Goal = require("../../models/Goal");
 const StockGoal = require("../../models/StockGoal");
 
+// @Route  GET api/goal/stockgoals
+// @Desc   Get all stockgoals
+// @access Private
+router.get("/stockgoals", auth, async (req, res) => {
+  try {
+    const stockGoals = await StockGoal.find();
+
+    if (stockGoals.length == 0) {
+      return res.status(400).json({
+        msg: "No stockgoals were found.",
+      });
+    }
+
+    res.json(stockGoals);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 // @Route  GET api/goal
 // @Desc   Get goals from profile
 // @access Private
