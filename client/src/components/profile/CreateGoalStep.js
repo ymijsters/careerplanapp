@@ -33,15 +33,16 @@ export const CreateGoalStep = () => {
               }).length == 0
             ) {
               goalData.selectedStockGoals.push(goal);
-            } else {
-              //Check if the goal is already in FormData (then don't add)
-              if (
-                goalData.customGoals.filter((storedGoal) => {
-                  return goal.id === storedGoal.id;
-                }).length == 0
-              ) {
-                goalData.customGoals.push(goal);
-              }
+            }
+          } else {
+            console.log("This is a custom goal");
+            //Check if the goal is already in FormData (then don't add)
+            if (
+              goalData.customGoals.filter((storedGoal) => {
+                return goal.id === storedGoal.id;
+              }).length == 0
+            ) {
+              goalData.customGoals.push(goal);
             }
           }
         }
