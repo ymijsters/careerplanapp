@@ -24,7 +24,7 @@ export const CreateGoalStep = () => {
       if (!loading && goals) {
         const goalData = { ...formData };
         //Add retreived goals to FormData
-        for (const goal in goals) {
+        goals.forEach((goal) => {
           console.log(goal);
           //Differentiate between stockgoals that have been selected and normal goals
           if (goal.stockgoal) {
@@ -49,7 +49,7 @@ export const CreateGoalStep = () => {
               goalData.customGoals.push(goal);
             }
           }
-        }
+        });
         setFormData(goalData);
       }
       //Load the current profile if it wasn't loaded yet (only when returning to profilecreation with the same account)
