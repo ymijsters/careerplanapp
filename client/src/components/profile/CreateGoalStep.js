@@ -18,7 +18,7 @@ export const CreateGoalStep = () => {
   useEffect(() => {
     try {
       //Load the current goals if it wasn't loaded yet (only when returning to profilecreation with the same account)
-      if (!goals) dispatch(getGoals());
+      if (goals.length == 0) dispatch(getGoals());
       //Update formData with current goals contents
       if (!loading && goals) {
         const goalData = { ...formData };
@@ -47,7 +47,7 @@ export const CreateGoalStep = () => {
         setFormData(goalData);
       }
       //Load the current profile if it wasn't loaded yet (only when returning to profilecreation with the same account)
-      if (!stockGoals) dispatch(getStockGoals());
+      if (stockGoals.length == 0) dispatch(getStockGoals());
       //Update formData with current profile contents
       if (!loading && stockGoals) {
         const goalData = { ...formData };
