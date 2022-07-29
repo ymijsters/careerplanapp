@@ -87,6 +87,45 @@ export const CreateGoalStep = () => {
               &nbsp;to see how we keep your data save.
             </div>
           </div>
+          {allStockGoals.forEach((stockGoal) => {
+            return (
+              <label className='d-flex flex-stack mb-5 cursor-pointer'>
+                <span className='d-flex align-items-center me-2'>
+                  <span className='symbol symbol-50px me-6'>
+                    <span className='symbol-label bg-light-primary'>
+                      <span className='svg-icon svg-icon-1 svg-icon-primary'>
+                        <svg
+                          xmlns='http://www.w3.org/2000/svg'
+                          width='24'
+                          height='24'
+                          viewBox='0 0 24 24'
+                          fill='none'
+                        >
+                          ....
+                        </svg>
+                      </span>
+                    </span>
+                  </span>
+
+                  <span className='d-flex flex-column'>
+                    <span className='fw-bold fs-6'>{stockGoal.name}</span>
+                    <span className='fs-7 text-muted'>
+                      {stockGoal.description}
+                    </span>
+                  </span>
+                </span>
+
+                <span className='form-check form-check-custom form-check-solid'>
+                  <input
+                    className='form-check-input'
+                    type='radio'
+                    name='category'
+                    value='1'
+                  />
+                </span>
+              </label>
+            );
+          })}
         </div>
       </div>
     </form>
