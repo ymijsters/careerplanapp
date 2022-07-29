@@ -18,6 +18,7 @@ export const CreateGoalStep = () => {
   useEffect(() => {
     try {
       //Load the current goals if it wasn't loaded yet (only when returning to profilecreation with the same account)
+      //NOTE: This might not work if a person doesn't have goals (As they will reload continuously) --> Check!
       if (goals.length == 0) dispatch(getGoals());
       //Update formData with current goals contents
       if (!loading && goals) {
@@ -29,7 +30,7 @@ export const CreateGoalStep = () => {
             if (
               goalData.selectedStockGoals.filter((stockGoal) => {
                 return goal.id === stockGoal.id;
-              }).length > 0
+              }).length == 0
             ) {
               goalData.selectedStockGoals.push(goal);
             } else {
@@ -37,7 +38,7 @@ export const CreateGoalStep = () => {
               if (
                 goalData.customGoals.filter((storedGoal) => {
                   return goal.id === storedGoal.id;
-                }).length > 0
+                }).length == 0
               ) {
                 goalData.customGoals.push(goal);
               }
