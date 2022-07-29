@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getGoals, getStockGoals } from "../../reducers/goal";
+import { Alert } from "../layout/Alert";
 
 const initialState = {
   selectedStockGoals: [],
@@ -25,7 +27,7 @@ export const CreateGoalStep = () => {
           //Differentiate between stockgoals that have been selected and normal goals
           if (goal.stockgoal) {
             if (
-              selectedStockGoals.filter((stockGoal) => {
+              goalData.selectedStockGoals.filter((stockGoal) => {
                 return goal.id === stockGoal.id;
               }).length > 0
             ) {
@@ -33,7 +35,7 @@ export const CreateGoalStep = () => {
             } else {
               //Check if the goal is already in FormData (then don't add)
               if (
-                customGoals.filter((storedGoal) => {
+                goalData.customGoals.filter((storedGoal) => {
                   return goal.id === storedGoal.id;
                 }).length > 0
               ) {
@@ -57,7 +59,7 @@ export const CreateGoalStep = () => {
     } catch (err) {
       console.log(err);
     }
-  }, [loading, goals, stockgoals, getGoals, getStockGoals]);
+  }, [loading, goals, stockGoals, getGoals, getStockGoals]);
 
   return (
     <form
