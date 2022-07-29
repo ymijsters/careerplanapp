@@ -3,8 +3,8 @@ import api from "../utils/api";
 import { addAlertWithTimout } from "./alert";
 
 const initialState = {
-  goals: [],
-  stockGoals: [],
+  goals: null,
+  stockGoals: null,
   tasks: [],
   loading: true,
   error: [],

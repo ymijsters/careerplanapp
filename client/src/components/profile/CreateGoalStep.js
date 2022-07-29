@@ -19,13 +19,12 @@ export const CreateGoalStep = () => {
     try {
       //Load the current goals if it wasn't loaded yet (only when returning to profilecreation with the same account)
       //NOTE: This might not work if a person doesn't have goals (As they will reload continuously) --> Check!
-      if (goals.length == 0) dispatch(getGoals());
+      if (goals) dispatch(getGoals());
       //Update formData with current goals contents
       if (!loading && goals) {
         const goalData = { ...formData };
         //Add retreived goals to FormData
         goals.forEach((goal) => {
-          console.log(goal);
           //Differentiate between stockgoals that have been selected and normal goals
           if (goal.stockgoal) {
             //Check if the goal is already in FormData (then don't add)
@@ -53,15 +52,13 @@ export const CreateGoalStep = () => {
         setFormData(goalData);
       }
       //Load the current profile if it wasn't loaded yet (only when returning to profilecreation with the same account)
-      if (stockGoals.length == 0) dispatch(getStockGoals());
+      if (stockGoals) dispatch(getStockGoals());
       //Update formData with current profile contents
       if (!loading && stockGoals) {
         const goalData = { ...formData };
         goalData.allStockGoals = stockGoals;
         setFormData(goalData);
       }
-      console.log("Formdata");
-      console.log(formData);
     } catch (err) {
       console.log(err);
     }
