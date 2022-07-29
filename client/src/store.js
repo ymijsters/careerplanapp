@@ -10,7 +10,7 @@ const store = configureStore({
     alert: alertReducer,
     auth: authReducer,
     profile: profileReducer,
-    goal: goalReducer,
+    goals: goalReducer,
   },
 });
 
