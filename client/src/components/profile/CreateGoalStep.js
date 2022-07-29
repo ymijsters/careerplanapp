@@ -66,6 +66,37 @@ export const CreateGoalStep = () => {
 
   const { selectedStockGoals, allStockGoals, customGoals } = formData;
 
+  const onChangeCheckbox = (e, goal, isStockGoal) => {
+    //Fix this first
+    e.preventDefault();
+    if (isStockGoal) {
+      let newStockGoals = stockgoals;
+      console.log(e.target.checked);
+      if (e.target.checked) {
+        newStockGoals = newStockGoals.filter((stockGoal) => {
+          if (stockGoal.id === goal.id) {
+            return false;
+          }
+          return true;
+        });
+      } else {
+        if (
+          newStockGoals.filter((stockGoal) => {
+            if (stockGoal.id === goal.id) {
+              return true;
+            }
+            return false;
+          }).length == 0
+        ) {
+          newStockGoals.push(goal);
+        }
+      }
+      //If removed then find in list and remove
+      //If added to list then check if not yet in the list and then add
+      setFormData({ ...formData, selectedStockGoals: newStockGoals });
+    }
+  };
+
   return (
     <form
       className='my-auto pb-5'
@@ -94,7 +125,10 @@ export const CreateGoalStep = () => {
               <label className='d-flex flex-stack mb-5 cursor-pointer'>
                 <span className='d-flex align-items-center me-2'>
                   <span className='symbol symbol-50px me-6'>
-                    <span className='symbol-label bg-light-primary'>
+                    <span
+                      className='symbol-label'
+                      style={{ backgroundColor: "#" + stockGoal.color }}
+                    >
                       <span className='svg-icon svg-icon-1 svg-icon-primary'>
                         <svg
                           xmlns='http://www.w3.org/2000/svg'
@@ -122,6 +156,7 @@ export const CreateGoalStep = () => {
                     className='form-check-input'
                     type='checkbox'
                     name='category'
+                    onChange={(e) => onChangeCheckbox(e, stockGoal, true)}
                     value='1'
                   />
                 </span>
