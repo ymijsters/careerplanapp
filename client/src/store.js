@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import alertReducer from "../src/reducers/alert";
 import authReducer from "../src/reducers/auth";
 import profileReducer from "../src/reducers/profile";
+import goalReducer from "../src/reducers/goal";
 import setAuthToken from "./utils/setAuthToken";
 
 const store = configureStore({
@@ -9,6 +10,7 @@ const store = configureStore({
     alert: alertReducer,
     auth: authReducer,
     profile: profileReducer,
+    goal: goalReducer,
   },
 });
 

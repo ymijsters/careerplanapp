@@ -17,15 +17,15 @@ const goalSlice = createSlice({
     setGoals(state, action) {
       state.loading = false;
       state.goals = action.payload;
-      error = [];
+      state.error = [];
     },
     setStockGoals(state, action) {
       state.stockGoals = action.payload;
-      error = [];
+      state.error = [];
     },
     setLoading(state, action) {
       state.loading = true;
-      error = [];
+      state.error = [];
     },
     setErrors(state, action) {
       state.error = action.payload;
