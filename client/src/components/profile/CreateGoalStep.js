@@ -64,6 +64,8 @@ export const CreateGoalStep = () => {
     }
   }, [loading, goals, stockGoals, getGoals, getStockGoals]);
 
+  const { selectedStockGoals, allStockGoals, customGoals } = formData;
+
   return (
     <form
       className='my-auto pb-5'
@@ -118,7 +120,7 @@ export const CreateGoalStep = () => {
                 <span className='form-check form-check-custom form-check-solid'>
                   <input
                     className='form-check-input'
-                    type='radio'
+                    type='checkbox'
                     name='category'
                     value='1'
                   />
