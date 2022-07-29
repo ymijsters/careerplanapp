@@ -101,7 +101,7 @@ router.post(
           profile: goalFields.profile,
         });
 
-        if (existingGoals) {
+        if (existingGoals.length > 0) {
           return res.status(400).json({
             msg: "There cannot be multiple goals with the same name for one user.",
           });
