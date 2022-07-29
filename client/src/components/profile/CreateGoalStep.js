@@ -70,7 +70,7 @@ export const CreateGoalStep = () => {
     //Fix this first
     e.preventDefault();
     if (isStockGoal) {
-      let newStockGoals = stockgoals;
+      let newStockGoals = [...selectedStockGoals];
       console.log(e.target.checked);
       if (e.target.checked) {
         newStockGoals = newStockGoals.filter((stockGoal) => {
