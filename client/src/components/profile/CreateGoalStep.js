@@ -72,8 +72,10 @@ export const CreateGoalStep = () => {
     if (isStockGoal) {
       let newStockGoals = [...selectedStockGoals];
       console.log(e.target.checked);
-      if (e.target.checked) {
+      if (!e.target.checked) {
         newStockGoals = newStockGoals.filter((stockGoal) => {
+          //This doesn't make sense
+          console.log("StockGoalID: " + stockGoal.id + " GoalID: " + goal.id);
           if (stockGoal.id === goal.id) {
             return false;
           }
@@ -82,6 +84,7 @@ export const CreateGoalStep = () => {
       } else {
         if (
           newStockGoals.filter((stockGoal) => {
+            //This doesn't make sense
             if (stockGoal.id === goal.id) {
               return true;
             }
