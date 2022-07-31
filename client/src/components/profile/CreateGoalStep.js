@@ -88,7 +88,8 @@ export const CreateGoalStep = () => {
         if (
           newStockGoals.filter((stockGoal) => {
             //This doesn't make sense
-            if (stockGoal.id === goal.id) {
+            if (stockGoal.name === goal.name) {
+              console.log("This stockgoal is already in the array");
               return true;
             }
             return false;
