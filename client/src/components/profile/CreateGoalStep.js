@@ -69,10 +69,12 @@ export const CreateGoalStep = () => {
   const onChangeCheckbox = (e, goal, isStockGoal) => {
     //Fix this first
     e.preventDefault();
+    console.log(goal);
     if (isStockGoal) {
       let newStockGoals = [...selectedStockGoals];
       console.log(e.target.checked);
       if (!e.target.checked) {
+        console.log("Goal will be removed");
         newStockGoals = newStockGoals.filter((stockGoal) => {
           //This doesn't make sense
           console.log("StockGoalID: " + stockGoal.id + " GoalID: " + goal.id);
@@ -82,6 +84,7 @@ export const CreateGoalStep = () => {
           return true;
         });
       } else {
+        console.log("Goal will be added");
         if (
           newStockGoals.filter((stockGoal) => {
             //This doesn't make sense
@@ -94,6 +97,7 @@ export const CreateGoalStep = () => {
           newStockGoals.push(goal);
         }
       }
+      console.log(newStockGoals);
       //If removed then find in list and remove
       //If added to list then check if not yet in the list and then add
       setFormData({ ...formData, selectedStockGoals: newStockGoals });
@@ -123,7 +127,7 @@ export const CreateGoalStep = () => {
               &nbsp;to see how we keep your data save.
             </div>
           </div>
-          {allStockGoals.map((stockGoal) => {
+          {allStockGoals.map((stockGoal, i) => {
             return (
               <label className='d-flex flex-stack mb-5 cursor-pointer'>
                 <span className='d-flex align-items-center me-2'>
@@ -160,7 +164,7 @@ export const CreateGoalStep = () => {
                     type='checkbox'
                     name='category'
                     onChange={(e) => onChangeCheckbox(e, stockGoal, true)}
-                    value='1'
+                    value={i}
                   />
                 </span>
               </label>
