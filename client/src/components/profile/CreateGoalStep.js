@@ -129,8 +129,17 @@ export const CreateGoalStep = () => {
             </div>
           </div>
           {allStockGoals.map((stockGoal, i) => {
+            let selected = false;
+            for (const selectedGoal in selectedStockGoals) {
+              console.log(
+                "selectedgoal: " + selectedGoal.name + " goal: " + goal.name
+              );
+              if (selectedGoal.name === stockGoal.name) {
+                selected = true;
+              }
+            }
             return (
-              <label className='d-flex flex-stack mb-5 cursor-pointer'>
+              <label className='d-flex flex-stack mb-5 cursor-pointer' key={i}>
                 <span className='d-flex align-items-center me-2'>
                   <span className='symbol symbol-50px me-6'>
                     <span
@@ -164,23 +173,9 @@ export const CreateGoalStep = () => {
                     className='form-check-input'
                     type='checkbox'
                     name='category'
-                    checked={() => {
-                      console.log("In checked function");
-                      for (const selectedGoal in selectedStockGoals) {
-                        console.log(
-                          "selectedgoal: " +
-                            selectedGoal.name +
-                            " goal: " +
-                            goal.name
-                        );
-                        if (selectedGoal.name === stockGoal.name) {
-                          return true;
-                        }
-                      }
-                      return false;
-                    }}
+                    checked={selected}
+                    value={selected}
                     onChange={(e) => onChangeCheckbox(e, stockGoal, true)}
-                    value={i}
                   />
                 </span>
               </label>
