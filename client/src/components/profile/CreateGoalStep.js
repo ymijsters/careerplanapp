@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getGoals, getStockGoals } from "../../reducers/goal";
+import goal, { getGoals, getStockGoals } from "../../reducers/goal";
 import { Alert } from "../layout/Alert";
 
 const initialState = {
@@ -73,7 +73,7 @@ export const CreateGoalStep = () => {
     if (isStockGoal) {
       let newStockGoals = [...selectedStockGoals];
       console.log(e.target.checked);
-      if (!e.target.checked) {
+      if (e.target.checked) {
         console.log("Goal will be removed");
         //If removed then find in list and remove
         newStockGoals = newStockGoals.filter((stockGoal) => {
@@ -165,7 +165,14 @@ export const CreateGoalStep = () => {
                     type='checkbox'
                     name='category'
                     checked={() => {
+                      console.log("In checked function");
                       for (const selectedGoal in selectedStockGoals) {
+                        console.log(
+                          "selectedgoal: " +
+                            selectedGoal.name +
+                            " goal: " +
+                            goal.name
+                        );
                         if (selectedGoal.name === stockGoal.name) {
                           return true;
                         }
