@@ -135,28 +135,21 @@ export const CreateGoalStep = () => {
                     checked={selected}
                     value={selected}
                     onChange={(e) => {
+                      //Moved in-line because some browser extension hijacks the checkbox
                       e.preventDefault();
                       let newStockGoals = [...selectedStockGoals];
-                      if (!e.target.checked) {
-                        //If removed then find in list and remove
-                        newStockGoals = newStockGoals.filter((stockGoal) => {
-                          if (stockGoal._id === goal._id) {
-                            return false;
-                          }
-                          return true;
-                        });
-                      } else {
-                        //If added to list then check if not yet in the list and then add
-                        if (
-                          newStockGoals.filter((stockGoal) => {
-                            if (stockGoal._id === goal._id) {
-                              return true;
-                            }
-                            return false;
-                          }).length == 0
-                        ) {
-                          newStockGoals.push(goal);
+                      let removed = false;
+                      //Check if item in list and remove
+                      newStockGoals = newStockGoals.filter((newStockGoal) => {
+                        if (stockGoal._id === newStockGoal._id) {
+                          removed = true;
+                          return false;
                         }
+                        return true;
+                      });
+                      //If no item was removed, add item as new
+                      if (!removed) {
+                        newStockGoals.push(stockGoal);
                       }
                       setFormData({
                         ...formData,
