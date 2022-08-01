@@ -164,6 +164,14 @@ export const CreateGoalStep = () => {
                     className='form-check-input'
                     type='checkbox'
                     name='category'
+                    checked={() => {
+                      for (const selectedGoal in selectedStockGoals) {
+                        if (selectedGoal.name === stockGoal.name) {
+                          return true;
+                        }
+                      }
+                      return false;
+                    }}
                     onChange={(e) => onChangeCheckbox(e, stockGoal, true)}
                     value={i}
                   />
