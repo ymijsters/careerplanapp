@@ -130,14 +130,18 @@ export const CreateGoalStep = () => {
           </div>
           {allStockGoals.map((stockGoal, i) => {
             let selected = false;
-            for (const selectedGoal in selectedStockGoals) {
+            selectedStockGoals.forEach((selectedGoal) => {
+              console.log(selectedGoal);
               console.log(
-                "selectedgoal: " + selectedGoal.name + " goal: " + goal.name
+                "selectedgoal: " +
+                  selectedGoal.name +
+                  " goal: " +
+                  stockGoal.name
               );
               if (selectedGoal.name === stockGoal.name) {
                 selected = true;
               }
-            }
+            });
             console.log(selected);
             return (
               <label className='d-flex flex-stack mb-5 cursor-pointer' key={i}>
