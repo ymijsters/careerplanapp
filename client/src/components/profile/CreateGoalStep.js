@@ -66,6 +66,31 @@ export const CreateGoalStep = () => {
 
   const { selectedStockGoals, allStockGoals, customGoals } = formData;
 
+  const onChangeCheckbox = (e, stockGoal) => {
+    {
+      //Moved in-line because some browser extension hijacks the checkbox
+      e.preventDefault();
+      let newStockGoals = [...selectedStockGoals];
+      let removed = false;
+      //Check if item in list and remove
+      newStockGoals = newStockGoals.filter((newStockGoal) => {
+        if (stockGoal._id === newStockGoal._id) {
+          removed = true;
+          return false;
+        }
+        return true;
+      });
+      //If no item was removed, add item as new
+      if (!removed) {
+        newStockGoals.push(stockGoal);
+      }
+      setFormData({
+        ...formData,
+        selectedStockGoals: newStockGoals,
+      });
+    }
+  };
+
   return (
     <form
       className='my-auto pb-5'
@@ -134,28 +159,7 @@ export const CreateGoalStep = () => {
                     name='category'
                     checked={selected}
                     value={selected}
-                    onChange={(e) => {
-                      //Moved in-line because some browser extension hijacks the checkbox
-                      e.preventDefault();
-                      let newStockGoals = [...selectedStockGoals];
-                      let removed = false;
-                      //Check if item in list and remove
-                      newStockGoals = newStockGoals.filter((newStockGoal) => {
-                        if (stockGoal._id === newStockGoal._id) {
-                          removed = true;
-                          return false;
-                        }
-                        return true;
-                      });
-                      //If no item was removed, add item as new
-                      if (!removed) {
-                        newStockGoals.push(stockGoal);
-                      }
-                      setFormData({
-                        ...formData,
-                        selectedStockGoals: newStockGoals,
-                      });
-                    }}
+                    onChange={(e) => onChangeCheckbox(e, stockGoal)}
                   />
                 </span>
               </label>
