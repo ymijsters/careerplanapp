@@ -66,45 +66,6 @@ export const CreateGoalStep = () => {
 
   const { selectedStockGoals, allStockGoals, customGoals } = formData;
 
-  const onChangeCheckbox = (e, goal, isStockGoal) => {
-    //Fix this first
-    e.preventDefault();
-    console.log(goal);
-    if (isStockGoal) {
-      let newStockGoals = [...selectedStockGoals];
-      console.log(e.target.checked);
-      if (!e.target.checked) {
-        console.log("Goal will be removed");
-        //If removed then find in list and remove
-        newStockGoals = newStockGoals.filter((stockGoal) => {
-          //This doesn't make sense
-          console.log("StockGoalID: " + stockGoal._id + " GoalID: " + goal._id);
-          if (stockGoal._id === goal._id) {
-            return false;
-          }
-          return true;
-        });
-      } else {
-        console.log("Goal will be added");
-        //If added to list then check if not yet in the list and then add
-        if (
-          newStockGoals.filter((stockGoal) => {
-            //This doesn't make sense
-            if (stockGoal._id === goal._id) {
-              console.log("This stockgoal is already in the array");
-              return true;
-            }
-            return false;
-          }).length == 0
-        ) {
-          newStockGoals.push(goal);
-        }
-      }
-      console.log(newStockGoals);
-      setFormData({ ...formData, selectedStockGoals: newStockGoals });
-    }
-  };
-
   return (
     <form
       className='my-auto pb-5'
@@ -129,20 +90,13 @@ export const CreateGoalStep = () => {
             </div>
           </div>
           {allStockGoals.map((stockGoal, i) => {
+            //Check if stockGoal should be selected
             let selected = false;
             selectedStockGoals.forEach((selectedGoal) => {
-              console.log(selectedGoal);
-              console.log(
-                "selectedgoal: " +
-                  selectedGoal.name +
-                  " goal: " +
-                  stockGoal.name
-              );
               if (selectedGoal.name === stockGoal.name) {
                 selected = true;
               }
             });
-            console.log(selected);
             return (
               <label className='d-flex flex-stack mb-5 cursor-pointer' key={i}>
                 <span className='d-flex align-items-center me-2'>
@@ -180,7 +134,35 @@ export const CreateGoalStep = () => {
                     name='category'
                     checked={selected}
                     value={selected}
-                    onChange={(e) => onChangeCheckbox(e, stockGoal, true)}
+                    onChange={(e) => {
+                      e.preventDefault();
+                      let newStockGoals = [...selectedStockGoals];
+                      if (!e.target.checked) {
+                        //If removed then find in list and remove
+                        newStockGoals = newStockGoals.filter((stockGoal) => {
+                          if (stockGoal._id === goal._id) {
+                            return false;
+                          }
+                          return true;
+                        });
+                      } else {
+                        //If added to list then check if not yet in the list and then add
+                        if (
+                          newStockGoals.filter((stockGoal) => {
+                            if (stockGoal._id === goal._id) {
+                              return true;
+                            }
+                            return false;
+                          }).length == 0
+                        ) {
+                          newStockGoals.push(goal);
+                        }
+                      }
+                      setFormData({
+                        ...formData,
+                        selectedStockGoals: newStockGoals,
+                      });
+                    }}
                   />
                 </span>
               </label>
