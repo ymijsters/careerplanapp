@@ -73,7 +73,7 @@ export const CreateGoalStep = () => {
     if (isStockGoal) {
       let newStockGoals = [...selectedStockGoals];
       console.log(e.target.checked);
-      if (e.target.checked) {
+      if (!e.target.checked) {
         console.log("Goal will be removed");
         //If removed then find in list and remove
         newStockGoals = newStockGoals.filter((stockGoal) => {
@@ -138,6 +138,7 @@ export const CreateGoalStep = () => {
                 selected = true;
               }
             }
+            console.log(selected);
             return (
               <label className='d-flex flex-stack mb-5 cursor-pointer' key={i}>
                 <span className='d-flex align-items-center me-2'>
