@@ -75,20 +75,22 @@ export const CreateGoalStep = () => {
       console.log(e.target.checked);
       if (!e.target.checked) {
         console.log("Goal will be removed");
+        //If removed then find in list and remove
         newStockGoals = newStockGoals.filter((stockGoal) => {
           //This doesn't make sense
-          console.log("StockGoalID: " + stockGoal.id + " GoalID: " + goal.id);
-          if (stockGoal.id === goal.id) {
+          console.log("StockGoalID: " + stockGoal._id + " GoalID: " + goal._id);
+          if (stockGoal._id === goal._id) {
             return false;
           }
           return true;
         });
       } else {
         console.log("Goal will be added");
+        //If added to list then check if not yet in the list and then add
         if (
           newStockGoals.filter((stockGoal) => {
             //This doesn't make sense
-            if (stockGoal.name === goal.name) {
+            if (stockGoal._id === goal._id) {
               console.log("This stockgoal is already in the array");
               return true;
             }
@@ -99,8 +101,6 @@ export const CreateGoalStep = () => {
         }
       }
       console.log(newStockGoals);
-      //If removed then find in list and remove
-      //If added to list then check if not yet in the list and then add
       setFormData({ ...formData, selectedStockGoals: newStockGoals });
     }
   };
